@@ -1,0 +1,10 @@
+directory: logs/
+
+# Log thresholds:
+#  0 - Disable logging
+#  1 - Errors and exceptions
+#  2 - Warnings
+#  3 - Notices
+#  4 - Debugging
+
+log_threshold: 1
