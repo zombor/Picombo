@@ -110,7 +110,7 @@ module Picombo
 			files = []
 			$LOAD_PATH.each do |path|
 				if File.exist?(path+'/'+directory+'/'+file+ext)
-					files.unshift(path+'/'+directory+'/'+file+ext)
+					files.unshift(path.chomp('/')+'/'+directory+'/'+file+ext)
 				end
 			end
 
