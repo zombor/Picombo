@@ -1,3 +1,5 @@
+require 'yaml'
+
 module Picombo
 	class Config
 		include Enumerable

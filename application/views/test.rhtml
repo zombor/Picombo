@@ -10,5 +10,5 @@
 <p><%= Picombo::Router.controller %></p>
 <p><%= Picombo::Router.method %></p>
 <h2>XSS CLEAN TEST</h2>
-<p><%= Picombo::Input.instance.xss_clean('<script type="text/javascript">alert("foo!")</script>')%></p>
+<p><%= Picombo::Security.xss_clean('<script type="text/javascript">alert("foo!")</script>')%></p>
 <%= Picombo::Core.list_files('controllers').inspect %>

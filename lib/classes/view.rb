@@ -28,6 +28,8 @@ module Picombo
 		#
 		# See the View documentation for usage specifics
 		class Core
+			require 'erb'
+
 			@view_file = ''
 			@view_data = []
 

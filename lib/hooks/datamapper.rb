@@ -1,3 +1,5 @@
+require 'dm-core'
+
 # Set up database
 DataMapper.setup(:default,
                  {:host => Picombo::Config.get('datamapper.default.host'),

@@ -1,15 +1,13 @@
-
 PICOMBO = File.expand_path(Dir.getwd) + '/'
 APPPATH = PICOMBO + 'application/'
-#SYSPATH = '../picombo/trunk/system/'
-#EXTPATH = PICOMBO + 'extensions/'
 
-#$LOAD_PATH.unshift(SYSPATH)
-#$LOAD_PATH.unshift(EXTPATH)
 $LOAD_PATH.unshift(APPPATH)
 
+use Rack::Static, :urls => ['/css', '/images']
+use Rack::Reloader
+use Rack::ShowExceptions
+
 # app better be defined in here!
-# to customize this, place a copy of bootstrap.rb in your application folder
-require 'bootstrap'
+require 'picombo'
 
 run run_system()
