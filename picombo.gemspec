@@ -28,7 +28,7 @@ Gem::Specification.new do |s|
 	'lib/config/cache.yaml',
 	'lib/config/log.yaml',
 	'lib/config/mimes.yaml',
-	'lib/config/routes.yaml',
+	'lib/config/routes.rb',
 	'lib/controllers/error_404.rb',
 	'lib/controllers/template.rb',
 	'lib/core/core.rb',
