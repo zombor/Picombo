@@ -32,9 +32,8 @@ class TestRouter < Test::Unit::TestCase
 		# processes a uri like this: /complex/il/chicago and points it to
 		# /city/index/complex/il/chicago
 		Picombo::Router.add('complex test', lambda{ |path|
-			if Regexp.new('(complex|foobar)/[a-z]{2}/(.+)').match(path)
-				parts = path.split('/').slice(1, 3)
-				{:controller => 'city', :method => 'index', :params => [parts[1], parts[2]]}
+			if Regexp.new('(complex|foobar)/([a-z]{2})/(.+)').match(path)
+				{:controller => 'city', :method => 'index', :params => Regexp.last_match[2,3]}
 			end
 		})
 	end
