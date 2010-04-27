@@ -5,9 +5,9 @@ module Picombo
 	# == Using Routes
 	# Routes are defined in the +config/routes.yaml+:: config file.
 	#
-	# There should always be a 'default' route, which is the route that applies when there are no uri segments. ex: +default: controller/method+::
+	# There should always be a '_default' route, which is the route that applies when there are no uri segments. ex: +Picombo::Router.add('_default', 'controller/method')+::
 	#
-	# The first kind of route is an exact match route. This will look for a URI match in the keys of the routes file. ex: +foobar/baz: controller/method+::
+	# The first kind of route is an exact match route. This will look for a URI match in the keys of the routes file. ex: +Picombo::Router.add('foobar/baz', 'controller/method')+::
 	#
 	# You can also use regex routes for more powerful routing:
 	# * A catch-all route: .+: controller/method
@@ -16,11 +16,9 @@ module Picombo
 
 	class Router
 		@@req = nil
+		@@routes = {}
 
 		# Data writer.
-		def self.routes=(routes)
-			@@routes = routes
-		end
 		def self.current_uri=(current_uri)
 			@@current_uri = current_uri
 		end
@@ -104,25 +102,36 @@ module Picombo
 			Picombo::Core.render
 		end
 
+		# Adds a route to the router
+		def self.add(key, val)
+			@@routes[key] = val
+		end
+
 		# Takes a uri path string and determines the controller, method and any get parameters
 		# Uses the routes config file for translation
 		def self.process_uri(path)
-			router_parts = path == '/' ? ('/'+Picombo::Config.get('routes._default')).split('/') : path.split('/')
+
+			# Load routes
+			Picombo::Core.find_file('config', 'routes').each do |file|
+				require file
+			end
+
+			router_parts = path == '/' ? ('/'+@@routes['_default']).split('/') : path.split('/')
 			@@current_uri = path.split('?').at(0)
 			@@segments = @@current_uri.split('/')[1..-1]
 			@@rsegments = router_parts[1..-1]
 			routed_uri = @@current_uri
 
-			# Load routes
-			routes = Picombo::Config.load('routes')
-
 			# Try and find a direct match
-			if routes.key?(@@current_uri)
-				routed_uri = routes[@@current_uri]
+			if @@routes.key?(@@current_uri)
+				routed_uri = @@routes[@@current_uri]
 				@@rsegments = routed_uri.split('/')
 			else
-				routes.each do |route, destination|
-					if route != '_default'
+				@@routes.each do |route, destination|
+					if destination.is_a?(Proc)
+						route = destination.call(@@current_uri)
+						return route if ! route.nil?
+					else
 						if Regexp.new(route).match(@@current_uri)
 							routed_uri.gsub!(Regexp.new(route), destination)
 							@@rsegments = routed_uri.split('/')[1..-1]
@@ -145,7 +154,7 @@ module Picombo
 			if ! @@rsegments[1].nil?
 				@@rsegments[1] = @@rsegments[1].split('?').at(0)
 			else
-				@@rsegments[1] = ('/'+Picombo::Config.get('routes._default')).split('/').at(2)
+				@@rsegments[1] = ('/'+@@routes['_default']).split('/').at(2)
 			end
 
 			# make sure to remove the GET from any of the parameters

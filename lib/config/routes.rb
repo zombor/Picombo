@@ -1,0 +1,1 @@
+Picombo::Router.add('_default', 'test/index')
