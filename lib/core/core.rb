@@ -11,6 +11,7 @@
 module Picombo
 	class Core
 		@@extension = 'html'
+		@@cli = false
 
 		def self.extension()
 			@@extension

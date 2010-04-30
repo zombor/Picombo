@@ -17,6 +17,7 @@ class TestCookie < Test::Unit::TestCase
 	def setup
 		$LOAD_PATH.unshift(SYSPATH)
 		$LOAD_PATH.unshift(APPPATH)
+		use Rack::Session::Cookie
 	end
 
 	def app

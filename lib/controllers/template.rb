@@ -27,7 +27,13 @@ module Picombo
 			end
 
 			def self.render
-				@@template.render if @@auto_render
+				if @@auto_render
+					if Picombo::Core.cli
+						return @@template.render true
+					end
+
+					@@template.render
+				end
 			end
 		end
 	end

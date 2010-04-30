@@ -60,7 +60,7 @@ module Picombo
 				view = ERB::new(File.read(@view_file))
 
 				if echo
-					view.result(get_binding())
+					puts view.result(get_binding())
 				else
 					Picombo::Core.response view.result(get_binding())
 				end
