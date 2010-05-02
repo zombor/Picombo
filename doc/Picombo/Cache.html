@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Picombo::Cache</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/classes/cache_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/classes/cache.rb">lib/classes/cache.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link"><a href="../Object.html">Object</a></p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-new">::new</a></li>
+					
+					<li><a href="#method-i-delete">#delete</a></li>
+					
+					<li><a href="#method-i-delete_all">#delete_all</a></li>
+					
+					<li><a href="#method-i-get">#get</a></li>
+					
+					<li><a href="#method-i-set">#set</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../LICENSE.html">LICENSE</a></li>
+				
+					<li class="file"><a href="../README.html">README</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../Picombo.html">Picombo</a></li>
+				
+					<li><a href="../Picombo/Bench.html">Picombo::Bench</a></li>
+				
+					<li><a href="../Picombo/CLI_Request.html">Picombo::CLI_Request</a></li>
+				
+					<li><a href="../Picombo/CLI_Response.html">Picombo::CLI_Response</a></li>
+				
+					<li><a href="../Picombo/Cache.html">Picombo::Cache</a></li>
+				
+					<li><a href="../Picombo/Cache_File.html">Picombo::Cache_File</a></li>
+				
+					<li><a href="../Picombo/Config.html">Picombo::Config</a></li>
+				
+					<li><a href="../Picombo/Controllers.html">Picombo::Controllers</a></li>
+				
+					<li><a href="../Picombo/Controllers/Error_404.html">Picombo::Controllers::Error_404</a></li>
+				
+					<li><a href="../Picombo/Controllers/Template.html">Picombo::Controllers::Template</a></li>
+				
+					<li><a href="../Picombo/Controllers/Test.html">Picombo::Controllers::Test</a></li>
+				
+					<li><a href="../Picombo/Controllers/Unittest.html">Picombo::Controllers::Unittest</a></li>
+				
+					<li><a href="../Picombo/Cookie.html">Picombo::Cookie</a></li>
+				
+					<li><a href="../Picombo/Core.html">Picombo::Core</a></li>
+				
+					<li><a href="../Picombo/E404.html">Picombo::E404</a></li>
+				
+					<li><a href="../Picombo/Event.html">Picombo::Event</a></li>
+				
+					<li><a href="../Picombo/Html.html">Picombo::Html</a></li>
+				
+					<li><a href="../Picombo/Input.html">Picombo::Input</a></li>
+				
+					<li><a href="../Picombo/Log.html">Picombo::Log</a></li>
+				
+					<li><a href="../Picombo/Model.html">Picombo::Model</a></li>
+				
+					<li><a href="../Picombo/Models.html">Picombo::Models</a></li>
+				
+					<li><a href="../Picombo/Models/Test.html">Picombo::Models::Test</a></li>
+				
+					<li><a href="../Picombo/Router.html">Picombo::Router</a></li>
+				
+					<li><a href="../Picombo/Security.html">Picombo::Security</a></li>
+				
+					<li><a href="../Picombo/Session.html">Picombo::Session</a></li>
+				
+					<li><a href="../Picombo/Url.html">Picombo::Url</a></li>
+				
+					<li><a href="../Picombo/View.html">Picombo::View</a></li>
+				
+					<li><a href="../Picombo/View/Core.html">Picombo::View::Core</a></li>
+				
+					<li><a href="../Picombo/View/XML.html">Picombo::View::XML</a></li>
+				
+					<li><a href="../Eventtest.html">Eventtest</a></li>
+				
+					<li><a href="../Eventtest/Foobar.html">Eventtest::Foobar</a></li>
+				
+					<li><a href="../Object.html">Object</a></li>
+				
+					<li><a href="../TestBench.html">TestBench</a></li>
+				
+					<li><a href="../TestConfig.html">TestConfig</a></li>
+				
+					<li><a href="../TestCookie.html">TestCookie</a></li>
+				
+					<li><a href="../TestCore.html">TestCore</a></li>
+				
+					<li><a href="../TestHTML.html">TestHTML</a></li>
+				
+					<li><a href="../TestInput.html">TestInput</a></li>
+				
+					<li><a href="../TestRouter.html">TestRouter</a></li>
+				
+					<li><a href="../TestURL.html">TestURL</a></li>
+				
+					<li><a href="../TestView.html">TestView</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Picombo::Cache</h1>
+
+		<div id="description">
+			<h2><a href="Cache.html">Cache</a> Class</h2>
+<p>
+The cache class allows you to serialize ruby objects, store them in a
+backend system, and retreive them later.
+</p>
+<p>
+Caching can be useful for methods that take a long time to run, or complex
+database queries that cannot be made quicker.
+</p>
+<h3>Usage</h3>
+<p>
+To set a cache item, use the set method:
+</p>
+<pre>
+ Picombo::Cache.new.set(:test, '&lt;h1&gt;It Works!&lt;/h1&gt;&lt;p&gt;This is a test.&lt;/p&gt;')
+</pre>
+<p>
+You can also pass a hash into the first parameter to set multiple items
+</p>
+<p>
+To retreive a cache item, use the get method:
+</p>
+<pre>
+ html = Picombo::Cache.new.get(:test)
+ # html will contain '&lt;h1&gt;It Works!&lt;/h1&gt;&lt;p&gt;This is a test.&lt;/p&gt;'
+</pre>
+<p>
+To delete an existing cache item, use the delete method
+</p>
+<pre>
+ Picombo::Cache.new.delete(:test)
+</pre>
+<h3>Drivers</h3>
+<p>
+The cache class supports drivers, which will allow you to use different
+backend systems to store your cache items. Right now only a file driver is
+available. You can write your own cache drivers to behave how you want as
+well.
+</p>
+<p>
+By default the cache driver will use the &#8220;default&#8221; group in
+your config file: cache.yaml You can specify multiple groups as well.
+</p>
+<h4>Usage</h4>
+<p>
+To call the cache driver with an alternate group, just pass that group name
+into the new method
+</p>
+<pre>
+ Picombo::Cache.new('my_other_group')
+</pre>
+<p>
+To do this, you need to define the &#8216;my_other_group&#8217; in your
+config file
+</p>
+<h3>Lifetimes</h3>
+<p>
+The cache class supports lifetimes, which will automatically expire cache
+items after the specified time period. These are specifies in seconds from
+the current time. When you use the set method, you can set a specific
+lifetime with the third parameter. The default is located in the config
+file group
+</p>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="new-method" class="method-detail ">
+				<a name="method-c-new"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">new</span><span
+						class="method-args">(group = nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Set up the driver
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="new-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/classes/cache.rb, line 52</span>
+52:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">group</span> = <span class="ruby-keyword kw">nil</span>)
+53:             <span class="ruby-identifier">group</span> = <span class="ruby-value str">'default'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">group</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">nil</span>
+54:             <span class="ruby-identifier">@@group</span> = <span class="ruby-identifier">group</span>
+55:             <span class="ruby-identifier">@@config</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">'cache.'</span><span class="ruby-operator">+</span><span class="ruby-identifier">group</span>)
+56:             <span class="ruby-identifier">driver_name</span> = <span class="ruby-value str">'Cache_'</span><span class="ruby-operator">+</span><span class="ruby-identifier">@@config</span>[<span class="ruby-value str">'driver'</span>].<span class="ruby-identifier">capitalize!</span>
+57:             <span class="ruby-identifier">@@driver</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">driver_name</span>).<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@config</span>)
+58:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="delete-method" class="method-detail ">
+				<a name="method-i-delete"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">delete</span><span
+						class="method-args">(keys)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Deletes a cache item
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="delete-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/classes/cache.rb, line 76</span>
+76:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete</span>(<span class="ruby-identifier">keys</span>)
+77:             <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Array</span>
+78:                 <span class="ruby-identifier">key</span> = [<span class="ruby-identifier">key</span>]
+79:             <span class="ruby-keyword kw">end</span>
+80: 
+81:             <span class="ruby-identifier">@@driver</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">keys</span>)
+82:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="delete-all-method" class="method-detail ">
+				<a name="method-i-delete_all"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">delete_all</span><span
+						class="method-args">()</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Deletes all the cache items
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="delete-all-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/classes/cache.rb, line 85</span>
+85:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">delete_all</span>
+86:             <span class="ruby-identifier">@@driver</span>.<span class="ruby-identifier">delete_all</span>
+87:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-method" class="method-detail ">
+				<a name="method-i-get"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get</span><span
+						class="method-args">(key)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Retreives a cache item
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/classes/cache.rb, line 71</span>
+71:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span>)
+72:             <span class="ruby-identifier">@@driver</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span>, (<span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Array</span>) <span class="ruby-operator">?</span> <span class="ruby-keyword kw">true</span> <span class="ruby-operator">:</span> <span class="ruby-keyword kw">false</span>)
+73:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="set-method" class="method-detail ">
+				<a name="method-i-set"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">set</span><span
+						class="method-args">(key, value = nil, lifetime = nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Sets a cache item
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="set-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/classes/cache.rb, line 61</span>
+61:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">lifetime</span> = <span class="ruby-keyword kw">nil</span>)
+62:             <span class="ruby-identifier">lifetime</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">'cache.'</span><span class="ruby-operator">+</span><span class="ruby-identifier">@@group</span><span class="ruby-operator">+</span><span class="ruby-value str">'.lifetime'</span>).<span class="ruby-identifier">to_i</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">lifetime</span> <span class="ruby-operator">==</span> <span class="ruby-keyword kw">nil</span>
+63:             <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+64:                 <span class="ruby-identifier">key</span> = {<span class="ruby-identifier">key</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">value</span>}
+65:             <span class="ruby-keyword kw">end</span>
+66: 
+67:             <span class="ruby-identifier">@@driver</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">lifetime</span>)
+68:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+

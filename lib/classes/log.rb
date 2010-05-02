@@ -16,7 +16,7 @@ module Picombo
 	class Log
 		include Singleton
 
-		# Writes log entry with level +type+:: with +message+::
+		# Writes log entry with level +type+ with +message+
 		def self.write(type, message)
 			types = {:none => 0, :info => 1, :warning => 2, :notice => 3, :debug => 4}
 

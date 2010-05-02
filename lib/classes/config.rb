@@ -1,6 +1,40 @@
 require 'yaml'
 
 module Picombo
+	# == Config Class
+	#
+	# Handles retreiving of key value storage items
+	#
+	# Picombo uses config items internally to keep track of common and long term configuration values. These files are stored in yaml files.
+	#
+	# === Overview
+	# There are several built in config file types:
+	#  * config.yaml
+	#  * datamapper.yaml
+	#  * cache.yaml
+	#  * log.yaml
+	#  * mimes.yaml
+	#
+	# The only file required to be in your application directory is config.yaml. The rest of the files are defined in the system location.
+	# You can change/overwrite the system values by creating the file in your application directory and specifying your application values there.
+	# Please refer to the source system files for examples.
+	#
+	# === Usage
+	# To call config values, use the Picombo::Config.get method. The first parameter is the path of your config value, using dot notation. With dot notation, the first part is the filename, and everything after that is the path inside the file.
+	#
+	# ==== Example
+	# For the following file (datamapper.yaml):
+	#
+	# 	default:
+	# 	 driver: mysql
+	# 	 host: localhost
+	# 	 database: picom_db
+	# 	 username: picom_u
+	# 	 password: picom_p
+	#
+	# You can get the database config value like:
+	#
+	# Picombo::Config.get('datamapper.default.database')
 	class Config
 		include Enumerable
 

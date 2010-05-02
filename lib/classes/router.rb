@@ -3,11 +3,11 @@ module Picombo
 	# Processes the URI to route requests to proper controller
 	#
 	# == Using Routes
-	# Routes are defined in the +config/routes.rb+:: config file.
+	# Routes are defined in the +config/routes.rb+ config file.
 	#
-	# There should always be a '_default' route, which is the route that applies when there are no uri segments. ex: +Picombo::Router.add('_default', 'controller/method')+::
+	# There should always be a '_default' route, which is the route that applies when there are no uri segments. ex: +Picombo::Router.add('_default', 'controller/method')+
 	#
-	# The first kind of route is an exact match route. This will look for a URI match in the keys of the routes file. ex: +Picombo::Router.add('foobar/baz', 'controller/method')+::
+	# The first kind of route is an exact match route. This will look for a URI match in the keys of the routes file. ex: +Picombo::Router.add('foobar/baz', 'controller/method')+
 	#
 	# You can also use regex routes for more powerful routing:
 	# * A catch-all route: Picombo::Router.add('(.+)', 'controller/method')
@@ -113,8 +113,8 @@ module Picombo
 
 		# Adds a route to the router
 		# 
-		# - key - the name of the route (optionally the source URI for simple routes)
-		# - val - the destination of the route (optionally a lambda for complex routes)
+		# * key - the name of the route (optionally the source URI for simple routes)
+		# * val - the destination of the route (optionally a lambda for complex routes)
 		def self.add(key, val, style = nil)
 			@@routes[key] = {:val => val, :generate => style}
 		end
