@@ -240,18 +240,18 @@ Autoloader for missing models
 					<div class="method-source-code"
 						id="const-missing-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/core/core.rb, line 174</span>
-174:         <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Models</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
-175:             <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-176: 
-177:             <span class="ruby-identifier">require</span> <span class="ruby-value str">'models/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>
-178: 
-179:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
-180: 
-181:             <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
-182:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
-183:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
-184:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/core/core.rb, line 179</span>
+179:         <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Models</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
+180:             <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+181: 
+182:             <span class="ruby-identifier">require</span> <span class="ruby-value str">'models/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>
+183: 
+184:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+185: 
+186:             <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
+187:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
+188:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
+189:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

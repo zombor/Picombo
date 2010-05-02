@@ -200,20 +200,22 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+This is where the magic happens!
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="run-system-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/picombo.rb, line 7</span>
- 7: <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_system</span>()
- 8:     <span class="ruby-identifier">app</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
- 9:         <span class="ruby-identifier">use</span> <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Session</span><span class="ruby-operator">::</span><span class="ruby-constant">Cookie</span>
-10:         <span class="ruby-identifier">run</span> <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">new</span>
-11:     <span class="ruby-keyword kw">end</span>
-12: <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/picombo.rb, line 8</span>
+ 8: <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_system</span>()
+ 9:     <span class="ruby-identifier">app</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Builder</span>.<span class="ruby-identifier">new</span> <span class="ruby-keyword kw">do</span>
+10:         <span class="ruby-identifier">use</span> <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Session</span><span class="ruby-operator">::</span><span class="ruby-constant">Cookie</span>
+11:         <span class="ruby-identifier">run</span> <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">new</span>
+12:     <span class="ruby-keyword kw">end</span>
+13: <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

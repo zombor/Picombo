@@ -304,18 +304,18 @@ Autoloader for missing controller names
 					<div class="method-source-code"
 						id="const-missing-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/core/core.rb, line 223</span>
-223:         <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Controllers</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
-224:             <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-225: 
-226:             <span class="ruby-identifier">require</span> <span class="ruby-value str">'controllers/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>
-227: 
-228:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
-229: 
-230:             <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
-231:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
-232:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span>
-233:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/core/core.rb, line 228</span>
+228:         <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Controllers</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
+229:             <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+230: 
+231:             <span class="ruby-identifier">require</span> <span class="ruby-value str">'controllers/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>
+232: 
+233:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+234: 
+235:             <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
+236:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
+237:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span>
+238:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

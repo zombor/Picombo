@@ -177,7 +177,10 @@
 		<h1 class="class">Picombo::CLI_Response</h1>
 
 		<div id="description">
-			
+			<p>
+Overloaded CLI Response object for compatibility
+</p>
+
 		</div>
 
 		<!-- Constants -->
@@ -205,17 +208,19 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+returns the buffer
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="finish-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 75</span>
-75:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">finish</span>
-76:             <span class="ruby-ivar">@body</span>
-77:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 88</span>
+88:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">finish</span>
+89:             <span class="ruby-ivar">@body</span>
+90:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -239,20 +244,22 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Writes content to the buffer
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="write-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 68</span>
-68:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">str</span>)
-69:             <span class="ruby-identifier">s</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">to_s</span>
-70:             <span class="ruby-ivar">@writer</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">s</span>
-71: 
-72:             <span class="ruby-identifier">str</span>
-73:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 80</span>
+80:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">write</span>(<span class="ruby-identifier">str</span>)
+81:             <span class="ruby-identifier">s</span> = <span class="ruby-identifier">str</span>.<span class="ruby-identifier">to_s</span>
+82:             <span class="ruby-ivar">@writer</span>.<span class="ruby-identifier">call</span> <span class="ruby-identifier">s</span>
+83: 
+84:             <span class="ruby-identifier">str</span>
+85:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

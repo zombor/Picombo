@@ -9,13 +9,18 @@
 # It's designed to be fast, lightweight and easy to use.
 
 module Picombo
+	# == Core
+	#
+	# The core class for Picombo. Handles system initialization and other core functionality.
 	class Core
 		@@extension = 'html'
 		@@cli = false
 
-		def self.extension()
+		# Gets the extension of the request
+		def self.extension
 			@@extension
 		end
+		# Assigns the extension of the request
 		def self.extension=(extension)
 			@@extension = extension
 		end

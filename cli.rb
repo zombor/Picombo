@@ -1,4 +1,6 @@
+# Root path
 PICOMBO = File.expand_path(Dir.getwd) + '/'
+# Application Path
 APPPATH = PICOMBO + 'application/'
 
 $LOAD_PATH.unshift(APPPATH)

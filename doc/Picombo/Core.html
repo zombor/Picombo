@@ -202,7 +202,17 @@
 		<h1 class="class">Picombo::Core</h1>
 
 		<div id="description">
-			
+			<h2><a href="Core.html">Core</a></h2>
+<p>
+The core class for <a href="../Picombo.html">Picombo</a>. Handles system
+initialization and other core functionality.
+</p>
+<hr style="height: 1px"></hr><h2><a href="Core.html">Core</a></h2>
+<p>
+The core class for <a href="../Picombo.html">Picombo</a>. Handles system
+initialization and other core functionality.
+</p>
+
 		</div>
 
 		<!-- Constants -->
@@ -230,17 +240,19 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Determines if the request was made on the CLI or not
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="cli-source">
 <pre>
-   <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 5</span>
-5:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cli</span>
-6:             <span class="ruby-identifier">@@cli</span>
-7:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 9</span>
+ 9:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">cli</span>
+10:             <span class="ruby-identifier">@@cli</span>
+11:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -264,17 +276,19 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Gets the extension of the request
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="extension-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core.rb, line 16</span>
-16:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">extension</span>()
-17:             <span class="ruby-identifier">@@extension</span>
-18:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/core/core.rb, line 20</span>
+20:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">extension</span>
+21:             <span class="ruby-identifier">@@extension</span>
+22:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -298,17 +312,19 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Assigns the extension of the request
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="extension--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core.rb, line 19</span>
-19:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">extension=</span>(<span class="ruby-identifier">extension</span>)
-20:             <span class="ruby-identifier">@@extension</span> = <span class="ruby-identifier">extension</span>
-21:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/core/core.rb, line 24</span>
+24:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">extension=</span>(<span class="ruby-identifier">extension</span>)
+25:             <span class="ruby-identifier">@@extension</span> = <span class="ruby-identifier">extension</span>
+26:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -347,22 +363,22 @@ Returns an array of files that are found
 					<div class="method-source-code"
 						id="find-file-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/core/core.rb, line 108</span>
-108:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find_file</span>(<span class="ruby-identifier">directory</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">required</span> = <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-value str">'rb'</span>)
-109:             <span class="ruby-identifier">ext</span> = <span class="ruby-value str">&quot;.&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">ext</span>
-110: 
-111:             <span class="ruby-identifier">files</span> = []
-112:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-113:                 <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">directory</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">file</span><span class="ruby-operator">+</span><span class="ruby-identifier">ext</span>)
-114:                     <span class="ruby-identifier">files</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">path</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-value str">'/'</span>)<span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">directory</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">file</span><span class="ruby-operator">+</span><span class="ruby-identifier">ext</span>)
-115:                 <span class="ruby-keyword kw">end</span>
-116:             <span class="ruby-keyword kw">end</span>
-117: 
-118:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">required</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">files</span>.<span class="ruby-identifier">empty?</span>
-119: 
-120:             <span class="ruby-comment cmt"># reverse the array, to put application files first</span>
-121:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">directory</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'config'</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">files</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">files</span>.<span class="ruby-identifier">reverse!</span>
-122:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/core/core.rb, line 113</span>
+113:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">find_file</span>(<span class="ruby-identifier">directory</span>, <span class="ruby-identifier">file</span>, <span class="ruby-identifier">required</span> = <span class="ruby-keyword kw">false</span>, <span class="ruby-identifier">ext</span> = <span class="ruby-value str">'rb'</span>)
+114:             <span class="ruby-identifier">ext</span> = <span class="ruby-value str">&quot;.&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">ext</span>
+115: 
+116:             <span class="ruby-identifier">files</span> = []
+117:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+118:                 <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">exist?</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">directory</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">file</span><span class="ruby-operator">+</span><span class="ruby-identifier">ext</span>)
+119:                     <span class="ruby-identifier">files</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-identifier">path</span>.<span class="ruby-identifier">chomp</span>(<span class="ruby-value str">'/'</span>)<span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">directory</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">file</span><span class="ruby-operator">+</span><span class="ruby-identifier">ext</span>)
+120:                 <span class="ruby-keyword kw">end</span>
+121:             <span class="ruby-keyword kw">end</span>
+122: 
+123:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">required</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">files</span>.<span class="ruby-identifier">empty?</span>
+124: 
+125:             <span class="ruby-comment cmt"># reverse the array, to put application files first</span>
+126:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">directory</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'config'</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">files</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">files</span>.<span class="ruby-identifier">reverse!</span>
+127:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -395,23 +411,23 @@ Lists all files and directories in a resource path.
 					<div class="method-source-code"
 						id="list-files-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/core/core.rb, line 125</span>
-125:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">list_files</span>(<span class="ruby-identifier">directory</span>)
-126:             <span class="ruby-identifier">files</span> = []
-127: 
-128:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
-129:                 <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">directory</span>)
-130:                     <span class="ruby-identifier">files</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">directory</span>).<span class="ruby-identifier">entries</span>.<span class="ruby-identifier">collect!</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-131:                         <span class="ruby-keyword kw">unless</span> (<span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'.'</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'..'</span>)
-132:                             <span class="ruby-identifier">path</span><span class="ruby-operator">+</span><span class="ruby-identifier">directory</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">file</span>
-133:                         <span class="ruby-keyword kw">end</span>
-134:                     })
-135:                 <span class="ruby-keyword kw">end</span>
-136:             <span class="ruby-keyword kw">end</span>
-137:             <span class="ruby-identifier">files</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'.'</span>)
-138:             <span class="ruby-identifier">files</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'..'</span>)
-139:             <span class="ruby-identifier">files</span>.<span class="ruby-identifier">compact</span>
-140:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/core/core.rb, line 130</span>
+130:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">list_files</span>(<span class="ruby-identifier">directory</span>)
+131:             <span class="ruby-identifier">files</span> = []
+132: 
+133:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">path</span><span class="ruby-operator">|</span>
+134:                 <span class="ruby-keyword kw">if</span> <span class="ruby-constant">File</span>.<span class="ruby-identifier">directory?</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">directory</span>)
+135:                     <span class="ruby-identifier">files</span>.<span class="ruby-identifier">concat</span>(<span class="ruby-constant">Dir</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">path</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">directory</span>).<span class="ruby-identifier">entries</span>.<span class="ruby-identifier">collect!</span> {<span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+136:                         <span class="ruby-keyword kw">unless</span> (<span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'.'</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">file</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'..'</span>)
+137:                             <span class="ruby-identifier">path</span><span class="ruby-operator">+</span><span class="ruby-identifier">directory</span><span class="ruby-operator">+</span><span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">file</span>
+138:                         <span class="ruby-keyword kw">end</span>
+139:                     })
+140:                 <span class="ruby-keyword kw">end</span>
+141:             <span class="ruby-keyword kw">end</span>
+142:             <span class="ruby-identifier">files</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'.'</span>)
+143:             <span class="ruby-identifier">files</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-value str">'..'</span>)
+144:             <span class="ruby-identifier">files</span>.<span class="ruby-identifier">compact</span>
+145:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -444,10 +460,10 @@ Allows access to raw response object
 					<div class="method-source-code"
 						id="raw-response-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core.rb, line 85</span>
-85:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">raw_response</span>
-86:             <span class="ruby-identifier">@@response</span>
-87:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/core/core.rb, line 90</span>
+90:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">raw_response</span>
+91:             <span class="ruby-identifier">@@response</span>
+92:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -480,14 +496,14 @@ Sets a system redirect
 					<div class="method-source-code"
 						id="redirect-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core.rb, line 70</span>
-70:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">redirect</span>(<span class="ruby-identifier">location</span>, <span class="ruby-identifier">status</span> = <span class="ruby-value">302</span>)
-71:             <span class="ruby-comment cmt"># Add the base url if a relative path was requested</span>
-72:             <span class="ruby-identifier">location</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Url</span>.<span class="ruby-identifier">base</span><span class="ruby-operator">+</span><span class="ruby-identifier">location</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">location</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'http'</span>
-73: 
-74:             <span class="ruby-identifier">@@redirect</span> = [<span class="ruby-identifier">location</span>, <span class="ruby-identifier">status</span>]
-75:             <span class="ruby-identifier">render</span>
-76:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/core/core.rb, line 75</span>
+75:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">redirect</span>(<span class="ruby-identifier">location</span>, <span class="ruby-identifier">status</span> = <span class="ruby-value">302</span>)
+76:             <span class="ruby-comment cmt"># Add the base url if a relative path was requested</span>
+77:             <span class="ruby-identifier">location</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Url</span>.<span class="ruby-identifier">base</span><span class="ruby-operator">+</span><span class="ruby-identifier">location</span> <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">location</span>[<span class="ruby-value">0</span><span class="ruby-operator">..</span><span class="ruby-value">3</span>] <span class="ruby-operator">==</span> <span class="ruby-value str">'http'</span>
+78: 
+79:             <span class="ruby-identifier">@@redirect</span> = [<span class="ruby-identifier">location</span>, <span class="ruby-identifier">status</span>]
+80:             <span class="ruby-identifier">render</span>
+81:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -521,19 +537,19 @@ href="Router.html">Picombo::Router</a> only.
 					<div class="method-source-code"
 						id="render-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/core/core.rb, line 90</span>
- 90:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">render</span>
- 91:             <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">@@redirect</span>.<span class="ruby-identifier">empty?</span>
- 92:                 <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">redirect</span>(*<span class="ruby-identifier">@@redirect</span>)
- 93:                 <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">finish</span>
- 94:             <span class="ruby-keyword kw">end</span>
- 95: 
- 96:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.display'</span>)
- 97: 
- 98:             <span class="ruby-identifier">response</span> = <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">finish</span>
- 99:             <span class="ruby-identifier">@@response</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Response</span>.<span class="ruby-identifier">new</span>
-100:             <span class="ruby-identifier">response</span>
-101:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/core/core.rb, line 95</span>
+ 95:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">render</span>
+ 96:             <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">@@redirect</span>.<span class="ruby-identifier">empty?</span>
+ 97:                 <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">redirect</span>(*<span class="ruby-identifier">@@redirect</span>)
+ 98:                 <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">finish</span>
+ 99:             <span class="ruby-keyword kw">end</span>
+100: 
+101:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.display'</span>)
+102: 
+103:             <span class="ruby-identifier">response</span> = <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">finish</span>
+104:             <span class="ruby-identifier">@@response</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Response</span>.<span class="ruby-identifier">new</span>
+105:             <span class="ruby-identifier">response</span>
+106:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -557,17 +573,20 @@ href="Router.html">Picombo::Router</a> only.
 
 				<div class="method-description">
 					
-					
+					<p>
+Renders output. Returns empty string, because all output should be
+&#8220;puts&#8221;&#8217;d
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="render-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 49</span>
-49:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">render</span>
-50:             <span class="ruby-value str">''</span>
-51:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 56</span>
+56:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">render</span>
+57:             <span class="ruby-value str">''</span>
+58:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -591,17 +610,19 @@ href="Router.html">Picombo::Router</a> only.
 
 				<div class="method-description">
 					
-					
+					<p>
+Adds content to the output buffer
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="response-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 45</span>
-45:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">response</span>(<span class="ruby-identifier">str</span>)
-46:             <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">str</span>)
-47:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 51</span>
+51:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">response</span>(<span class="ruby-identifier">str</span>)
+52:             <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">str</span>)
+53:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -634,11 +655,11 @@ Adds content to the output buffer
 					<div class="method-source-code"
 						id="response-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core.rb, line 79</span>
-79:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">response</span>(<span class="ruby-identifier">str</span>, <span class="ruby-identifier">status</span> = <span class="ruby-value">200</span>)
-80:             <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">status</span>
-81:             <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">str</span>)
-82:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/core/core.rb, line 84</span>
+84:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">response</span>(<span class="ruby-identifier">str</span>, <span class="ruby-identifier">status</span> = <span class="ruby-value">200</span>)
+85:             <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-identifier">status</span>
+86:             <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">write</span>(<span class="ruby-identifier">str</span>)
+87:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -677,51 +698,51 @@ Standard call function that gets invoked by Rack
 					<div class="method-source-code"
 						id="call-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core.rb, line 24</span>
-24:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">env</span>)
-25:             <span class="ruby-comment cmt"># start system benchmark</span>
-26:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'application'</span>)
-27:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'loading'</span>)
-28: 
-29:             <span class="ruby-identifier">@@env</span> = <span class="ruby-identifier">env</span>
-30:             <span class="ruby-identifier">@@req</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">env</span>)
-31: 
-32:             <span class="ruby-identifier">@@extension</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">path</span>)[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
-33:             <span class="ruby-identifier">@@extension</span> = <span class="ruby-value str">'html'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">@@extension</span>.<span class="ruby-identifier">nil?</span>
-34: 
-35:             <span class="ruby-identifier">@@response</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Response</span>.<span class="ruby-identifier">new</span>
-36:             <span class="ruby-comment cmt">#@@response['Content-Type'] = Picombo::Config.load('mimes.'+@@extension)[0]</span>
-37:             <span class="ruby-identifier">@@response</span>[<span class="ruby-value str">'Content-Type'</span>] = <span class="ruby-value str">'text/html'</span>
-38:             <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-value">200</span>
-39:             <span class="ruby-identifier">@@redirect</span> = []
-40: 
-41:             <span class="ruby-comment cmt"># Add directory extensions to the filesystem</span>
-42:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">'config.extensions'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">extension</span><span class="ruby-operator">|</span>
-43:                 <span class="ruby-identifier">require</span> <span class="ruby-identifier">extension</span>
-44:             <span class="ruby-keyword kw">end</span>
-45:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-constant">APPPATH</span>)
-46:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-constant">APPPATH</span>)
-47: 
-48:             <span class="ruby-comment cmt"># Load hooks</span>
-49:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">'config.hooks'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hook</span><span class="ruby-operator">|</span>
-50:                 <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">find_file</span>(<span class="ruby-value str">'hooks'</span>, <span class="ruby-identifier">hook</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-51:                     <span class="ruby-identifier">require</span> <span class="ruby-identifier">file</span>
-52:                 <span class="ruby-keyword kw">end</span>
-53:             <span class="ruby-keyword kw">end</span>
-54: 
-55:             <span class="ruby-comment cmt">## intialize the input library</span>
-56:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Input</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">set_request</span>(<span class="ruby-identifier">@@req</span>)
-57:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Session</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">init</span>(<span class="ruby-identifier">@@req</span>)
-58:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Cookie</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">init</span>(<span class="ruby-identifier">@@req</span>)
-59:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">stop</span>(<span class="ruby-value str">'loading'</span>)
-60: 
-61:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>.<span class="ruby-identifier">write</span>(<span class="ruby-value">:debug</span>, <span class="ruby-value str">'Picombo Setup Complete'</span>)
-62:             <span class="ruby-identifier">output</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Router</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@req</span>).<span class="ruby-identifier">process</span>()
-63: 
-64:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.shutdown'</span>)
+    <span class="ruby-comment cmt"># File lib/core/core.rb, line 29</span>
+29:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>(<span class="ruby-identifier">env</span>)
+30:             <span class="ruby-comment cmt"># start system benchmark</span>
+31:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'application'</span>)
+32:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'loading'</span>)
+33: 
+34:             <span class="ruby-identifier">@@env</span> = <span class="ruby-identifier">env</span>
+35:             <span class="ruby-identifier">@@req</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Request</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">env</span>)
+36: 
+37:             <span class="ruby-identifier">@@extension</span> = <span class="ruby-constant">File</span>.<span class="ruby-identifier">extname</span>(<span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">path</span>)[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
+38:             <span class="ruby-identifier">@@extension</span> = <span class="ruby-value str">'html'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">@@extension</span>.<span class="ruby-identifier">nil?</span>
+39: 
+40:             <span class="ruby-identifier">@@response</span> = <span class="ruby-constant">Rack</span><span class="ruby-operator">::</span><span class="ruby-constant">Response</span>.<span class="ruby-identifier">new</span>
+41:             <span class="ruby-comment cmt">#@@response['Content-Type'] = Picombo::Config.load('mimes.'+@@extension)[0]</span>
+42:             <span class="ruby-identifier">@@response</span>[<span class="ruby-value str">'Content-Type'</span>] = <span class="ruby-value str">'text/html'</span>
+43:             <span class="ruby-identifier">@@response</span>.<span class="ruby-identifier">status</span> = <span class="ruby-value">200</span>
+44:             <span class="ruby-identifier">@@redirect</span> = []
+45: 
+46:             <span class="ruby-comment cmt"># Add directory extensions to the filesystem</span>
+47:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">'config.extensions'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">extension</span><span class="ruby-operator">|</span>
+48:                 <span class="ruby-identifier">require</span> <span class="ruby-identifier">extension</span>
+49:             <span class="ruby-keyword kw">end</span>
+50:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-constant">APPPATH</span>)
+51:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-constant">APPPATH</span>)
+52: 
+53:             <span class="ruby-comment cmt"># Load hooks</span>
+54:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">'config.hooks'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hook</span><span class="ruby-operator">|</span>
+55:                 <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">find_file</span>(<span class="ruby-value str">'hooks'</span>, <span class="ruby-identifier">hook</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+56:                     <span class="ruby-identifier">require</span> <span class="ruby-identifier">file</span>
+57:                 <span class="ruby-keyword kw">end</span>
+58:             <span class="ruby-keyword kw">end</span>
+59: 
+60:             <span class="ruby-comment cmt">## intialize the input library</span>
+61:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Input</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">set_request</span>(<span class="ruby-identifier">@@req</span>)
+62:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Session</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">init</span>(<span class="ruby-identifier">@@req</span>)
+63:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Cookie</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">init</span>(<span class="ruby-identifier">@@req</span>)
+64:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">stop</span>(<span class="ruby-value str">'loading'</span>)
 65: 
-66:             <span class="ruby-identifier">output</span>
-67:         <span class="ruby-keyword kw">end</span></pre>
+66:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>.<span class="ruby-identifier">write</span>(<span class="ruby-value">:debug</span>, <span class="ruby-value str">'Picombo Setup Complete'</span>)
+67:             <span class="ruby-identifier">output</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Router</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@req</span>).<span class="ruby-identifier">process</span>()
+68: 
+69:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.shutdown'</span>)
+70: 
+71:             <span class="ruby-identifier">output</span>
+72:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -745,49 +766,51 @@ Standard call function that gets invoked by Rack
 
 				<div class="method-description">
 					
-					
+					<p>
+Standard call function that gets invoked by Rack
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="call-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 9</span>
- 9:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>
-10:             <span class="ruby-identifier">@@cli</span> = <span class="ruby-keyword kw">true</span>
-11: 
-12:             <span class="ruby-comment cmt"># start system benchmark</span>
-13:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'application'</span>)
-14:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'loading'</span>)
-15: 
-16:             <span class="ruby-identifier">@@req</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI_Request</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">ARGV</span>[<span class="ruby-value">0</span>])
-17: 
-18:             <span class="ruby-identifier">@@response</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI_Response</span>.<span class="ruby-identifier">new</span>
-19:             <span class="ruby-identifier">@@redirect</span> = []
+    <span class="ruby-comment cmt"># File lib/core/core_cli.rb, line 14</span>
+14:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">call</span>
+15:             <span class="ruby-identifier">@@cli</span> = <span class="ruby-keyword kw">true</span>
+16: 
+17:             <span class="ruby-comment cmt"># start system benchmark</span>
+18:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'application'</span>)
+19:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'loading'</span>)
 20: 
-21:             <span class="ruby-comment cmt"># Add directory extensions to the filesystem</span>
-22:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">'config.extensions'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">extension</span><span class="ruby-operator">|</span>
-23:                 <span class="ruby-identifier">require</span> <span class="ruby-identifier">extension</span>
-24:             <span class="ruby-keyword kw">end</span>
-25:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-constant">APPPATH</span>)
-26:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-constant">APPPATH</span>)
-27: 
-28:             <span class="ruby-comment cmt"># Load hooks</span>
-29:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">'config.hooks'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hook</span><span class="ruby-operator">|</span>
-30:                 <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">find_file</span>(<span class="ruby-value str">'hooks'</span>, <span class="ruby-identifier">hook</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-31:                     <span class="ruby-identifier">require</span> <span class="ruby-identifier">file</span>
-32:                 <span class="ruby-keyword kw">end</span>
-33:             <span class="ruby-keyword kw">end</span>
-34: 
-35:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">stop</span>(<span class="ruby-value str">'loading'</span>)
-36: 
-37:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>.<span class="ruby-identifier">write</span>(<span class="ruby-value">:debug</span>, <span class="ruby-value str">'Picombo Setup Complete'</span>)
-38:             <span class="ruby-identifier">output</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Router</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@req</span>).<span class="ruby-identifier">process</span>()
+21:             <span class="ruby-identifier">@@req</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI_Request</span>.<span class="ruby-identifier">new</span>(<span class="ruby-constant">ARGV</span>[<span class="ruby-value">0</span>])
+22: 
+23:             <span class="ruby-identifier">@@response</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">CLI_Response</span>.<span class="ruby-identifier">new</span>
+24:             <span class="ruby-identifier">@@redirect</span> = []
+25: 
+26:             <span class="ruby-comment cmt"># Add directory extensions to the filesystem</span>
+27:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">'config.extensions'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">extension</span><span class="ruby-operator">|</span>
+28:                 <span class="ruby-identifier">require</span> <span class="ruby-identifier">extension</span>
+29:             <span class="ruby-keyword kw">end</span>
+30:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-constant">APPPATH</span>)
+31:             <span class="ruby-identifier">$LOAD_PATH</span>.<span class="ruby-identifier">unshift</span>(<span class="ruby-constant">APPPATH</span>)
+32: 
+33:             <span class="ruby-comment cmt"># Load hooks</span>
+34:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">get</span>(<span class="ruby-value str">'config.hooks'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">hook</span><span class="ruby-operator">|</span>
+35:                 <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">find_file</span>(<span class="ruby-value str">'hooks'</span>, <span class="ruby-identifier">hook</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+36:                     <span class="ruby-identifier">require</span> <span class="ruby-identifier">file</span>
+37:                 <span class="ruby-keyword kw">end</span>
+38:             <span class="ruby-keyword kw">end</span>
 39: 
-40:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.shutdown'</span>)
+40:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">stop</span>(<span class="ruby-value str">'loading'</span>)
 41: 
-42:             <span class="ruby-identifier">output</span>
-43:         <span class="ruby-keyword kw">end</span></pre>
+42:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Log</span>.<span class="ruby-identifier">write</span>(<span class="ruby-value">:debug</span>, <span class="ruby-value str">'Picombo Setup Complete'</span>)
+43:             <span class="ruby-identifier">output</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Router</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">@@req</span>).<span class="ruby-identifier">process</span>()
+44: 
+45:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.shutdown'</span>)
+46: 
+47:             <span class="ruby-identifier">output</span>
+48:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

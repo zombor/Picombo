@@ -321,18 +321,18 @@ Autoloader for missing <a href="Picombo.html">Picombo</a> classes
 					<div class="method-source-code"
 						id="const-missing-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/core/core.rb, line 144</span>
-144:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Picombo</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
-145:         <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-146: 
-147:         <span class="ruby-identifier">require</span> <span class="ruby-value str">'classes/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>
-148: 
-149:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
-150: 
-151:         <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
-152:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
-153:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
-154:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/core/core.rb, line 149</span>
+149:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Picombo</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
+150:         <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+151: 
+152:         <span class="ruby-identifier">require</span> <span class="ruby-value str">'classes/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>
+153: 
+154:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+155: 
+156:         <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
+157:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
+158:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
+159:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

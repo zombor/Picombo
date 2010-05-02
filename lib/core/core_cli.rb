@@ -1,11 +1,16 @@
 require 'core/core'
 
 module Picombo
+	# == Core
+	#
+	# The core class for Picombo. Handles system initialization and other core functionality.
 	class Core
+		# Determines if the request was made on the CLI or not
 		def self.cli
 			@@cli
 		end
 
+		# Standard call function that gets invoked by Rack
 		def call
 			@@cli = true
 
@@ -42,29 +47,36 @@ module Picombo
 			output
 		end
 
+		# Adds content to the output buffer
 		def self.response(str)
 			@@response.write(str)
 		end
 
+		# Renders output. Returns empty string, because all output should be "puts"'d
 		def self.render
 			''
 		end
 	end
 
+	# Overloaded CLI Request object for compatibility
 	class CLI_Request
+		# Assigns the request path
 		def initialize(path)
 			@path = path
 		end
 
+		# Returns the request path
 		def path
 			@path
 		end
 	end
 
+	# Overloaded CLI Response object for compatibility
 	class CLI_Response
 		@writer = lambda { |x| @body << x }
 		@body = []
 
+		# Writes content to the buffer
 		def write(str)
 			s = str.to_s
 			@writer.call s
@@ -72,6 +84,7 @@ module Picombo
 			str
 		end
 
+		# returns the buffer
 		def finish
 			@body
 		end

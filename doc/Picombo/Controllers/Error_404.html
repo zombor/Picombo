@@ -175,7 +175,12 @@
 		<h1 class="class">Picombo::Controllers::Error_404</h1>
 
 		<div id="description">
-			
+			<h2>Controller class for handling 404 events</h2>
+<p>
+To override, re-define this in your application&#8217;s controller
+directory
+</p>
+
 		</div>
 
 		<!-- Constants -->
@@ -203,19 +208,21 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Displays a 404 message for the current uri
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="run-error-source">
 <pre>
-   <span class="ruby-comment cmt"># File lib/controllers/error_404.rb, line 4</span>
-4:             <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_error</span>(<span class="ruby-identifier">uri</span>)
-5:                 <span class="ruby-identifier">body</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">View</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'404'</span>)
-6:                 <span class="ruby-identifier">body</span>.<span class="ruby-identifier">set</span>(<span class="ruby-value str">'uri'</span>, <span class="ruby-identifier">uri</span>)
-7:                 <span class="ruby-keyword kw">return</span> [<span class="ruby-value">404</span>, {<span class="ruby-value str">'Content-Type'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'text/html'</span>}, <span class="ruby-identifier">body</span>.<span class="ruby-identifier">render</span>(<span class="ruby-keyword kw">true</span>)]
-8:             <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/controllers/error_404.rb, line 8</span>
+ 8:             <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">run_error</span>(<span class="ruby-identifier">uri</span>)
+ 9:                 <span class="ruby-identifier">body</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">View</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'404'</span>)
+10:                 <span class="ruby-identifier">body</span>.<span class="ruby-identifier">set</span>(<span class="ruby-value str">'uri'</span>, <span class="ruby-identifier">uri</span>)
+11:                 <span class="ruby-keyword kw">return</span> [<span class="ruby-value">404</span>, {<span class="ruby-value str">'Content-Type'</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value str">'text/html'</span>}, <span class="ruby-identifier">body</span>.<span class="ruby-identifier">render</span>(<span class="ruby-keyword kw">true</span>)]
+12:             <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

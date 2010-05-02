@@ -27,35 +27,44 @@ module Picombo
 		@@req = nil
 		@@routes = {}
 
-		# Data writer.
+		# Assigns the current uri of the request
 		def self.current_uri=(current_uri)
 			@@current_uri = current_uri
 		end
+		# Reads the current uri of the request
 		def self.current_uri
 			@@current_uri
 		end
+		# Assigns the current segments of the request
 		def self.segments=(segments)
 			@@segments = segments
 		end
+		# Reads the current segments of the request
 		def self.segments
 			@@segments
 		end
+		# Assigns the current rsegments of the request
 		def self.rsegments=(rsegments)
 			@@rsegments = rsegments
 		end
+		# Assigns the current controller of the request
 		def self.controller=(controller)
 			@@controller = controller
 		end
+		# Reads the current controller of the request
 		def self.controller
 			@@controller
 		end
+		# Assigns the current method of the request
 		def self.method=(method)
 			@@method = method
 		end
+		# Reads the current method of the request
 		def self.method
 			@@method
 		end
 
+		# Initializes the request
 		def initialize(req)
 			@@req = req
 		end

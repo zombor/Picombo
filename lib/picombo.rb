@@ -4,6 +4,7 @@ require 'singleton'
 require 'core/core'
 require 'classes/config'
 
+# This is where the magic happens!
 def run_system()
 	app = Rack::Builder.new do
 		use Rack::Session::Cookie
