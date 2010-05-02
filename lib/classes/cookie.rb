@@ -1,4 +1,17 @@
 module Picombo
+	# == Cookie handling class
+	#
+	# In essense, a proxy to the rack cookie handling methods.
+	#
+	# == Example usage
+	# Writing cookie values
+	# 	Picombo::Cookie.set(:sample, 'this is the content of the cookie')
+	#
+	# Getting cookie values
+	# 	Picombo::Cookie.get(:sample)
+	#
+	# Deleting a cookie
+	# 	Picombo::Cookie.delete(:sample)
 	class Cookie
 		include Singleton
 

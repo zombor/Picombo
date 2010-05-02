@@ -5,7 +5,7 @@ module Picombo
 	#
 	# Handles retreiving of key value storage items
 	#
-	# Picombo uses config items internally to keep track of common and long term configuration values. These files are stored in yaml files.
+	# Picombo uses config items internally to keep track of common or long term configuration values. These settings are stored in yaml files.
 	#
 	# === Overview
 	# There are several built in config file types:

@@ -220,7 +220,29 @@
 		<h1 class="class">Picombo::Cookie</h1>
 
 		<div id="description">
-			
+			<h2><a href="Cookie.html">Cookie</a> handling class</h2>
+<p>
+In essense, a proxy to the rack cookie handling methods.
+</p>
+<h2>Example usage</h2>
+<p>
+Writing cookie values
+</p>
+<pre>
+ Picombo::Cookie.set(:sample, 'this is the content of the cookie')
+</pre>
+<p>
+Getting cookie values
+</p>
+<pre>
+ Picombo::Cookie.get(:sample)
+</pre>
+<p>
+Deleting a cookie
+</p>
+<pre>
+ Picombo::Cookie.delete(:sample)</pre>
+
 		</div>
 
 		<!-- Constants -->
@@ -257,10 +279,10 @@ Deletes a cookie item defined by key
 					<div class="method-source-code"
 						id="delete-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 23</span>
-23:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)
-24:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">raw_response</span>.<span class="ruby-identifier">delete_cookie</span>(<span class="ruby-identifier">key</span>)
-25:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 36</span>
+36:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)
+37:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">raw_response</span>.<span class="ruby-identifier">delete_cookie</span>(<span class="ruby-identifier">key</span>)
+38:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -293,12 +315,12 @@ Retrieves a cookie item defined by key
 					<div class="method-source-code"
 						id="get-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 11</span>
-11:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">default</span> = <span class="ruby-keyword kw">nil</span>)
-12:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">cookies</span>[<span class="ruby-identifier">key</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">cookies</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
-13: 
-14:             <span class="ruby-identifier">default</span>
-15:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 24</span>
+24:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">default</span> = <span class="ruby-keyword kw">nil</span>)
+25:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">cookies</span>[<span class="ruby-identifier">key</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">cookies</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+26: 
+27:             <span class="ruby-identifier">default</span>
+28:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -331,10 +353,10 @@ Sets a cookie item defined by key to val
 					<div class="method-source-code"
 						id="set-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 18</span>
-18:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>)
-19:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">raw_response</span>.<span class="ruby-identifier">set_cookie</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>)
-20:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 31</span>
+31:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>)
+32:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">raw_response</span>.<span class="ruby-identifier">set_cookie</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>)
+33:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -373,10 +395,10 @@ Initializes the request for cookies
 					<div class="method-source-code"
 						id="init-source">
 <pre>
-   <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 6</span>
-6:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">init</span>(<span class="ruby-identifier">req</span>)
-7:             <span class="ruby-identifier">@@req</span> = <span class="ruby-identifier">req</span>
-8:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 19</span>
+19:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">init</span>(<span class="ruby-identifier">req</span>)
+20:             <span class="ruby-identifier">@@req</span> = <span class="ruby-identifier">req</span>
+21:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

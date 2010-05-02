@@ -1,7 +1,6 @@
 module Picombo
 
 	# Helper class to generate HTML
-
 	class Html
 		include Singleton
 
@@ -16,6 +15,7 @@ module Picombo
 			safe.join
 		end
 
+		# Returns a html link tag for +css+
 		def self.style(css)
 			unless css.is_a? Array
 				return '<link type="text/css" href="'+Picombo::Url.base()+css+'" rel="stylesheet" />'
@@ -29,6 +29,7 @@ module Picombo
 			to_return
 		end
 
+		# Returns a html script tag for +js+
 		def self.script(js)
 			unless js.is_a? Array
 				return '<script type="text/javascript" src="'+Url.base()+js+'"></script>'

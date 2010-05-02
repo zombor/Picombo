@@ -6,6 +6,7 @@ module Picombo
 		#
 		# See the View documentation for usage specifics
 		class XML < Picombo::View::Core
+			# Standard constructor
 			def initialize(filename)
 				super(filename)
 

@@ -67,6 +67,7 @@ module Picombo
 			end
 		end
 
+		# Autoloader for missing view constants. Used to load non-standard view classes like XML.
 		def View.const_missing(name)
 			filename = name.to_s
 

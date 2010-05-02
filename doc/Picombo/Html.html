@@ -258,16 +258,16 @@ Returns a safe email address, by encoding each character in the email
 					<div class="method-source-code"
 						id="email-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/html.rb, line 9</span>
- 9:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">email</span>(<span class="ruby-identifier">email</span>)
-10:             <span class="ruby-identifier">safe</span> = []
-11: 
-12:             <span class="ruby-identifier">email</span>.<span class="ruby-identifier">each_byte</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">char</span><span class="ruby-operator">|</span>
-13:                 <span class="ruby-identifier">safe</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'&amp;#'</span><span class="ruby-operator">+</span><span class="ruby-identifier">char</span>.<span class="ruby-identifier">to_s</span>
-14:             <span class="ruby-keyword kw">end</span>
-15: 
-16:             <span class="ruby-identifier">safe</span>.<span class="ruby-identifier">join</span>
-17:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/html.rb, line 8</span>
+ 8:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">email</span>(<span class="ruby-identifier">email</span>)
+ 9:             <span class="ruby-identifier">safe</span> = []
+10: 
+11:             <span class="ruby-identifier">email</span>.<span class="ruby-identifier">each_byte</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">char</span><span class="ruby-operator">|</span>
+12:                 <span class="ruby-identifier">safe</span> <span class="ruby-operator">&lt;&lt;</span> <span class="ruby-value str">'&amp;#'</span><span class="ruby-operator">+</span><span class="ruby-identifier">char</span>.<span class="ruby-identifier">to_s</span>
+13:             <span class="ruby-keyword kw">end</span>
+14: 
+15:             <span class="ruby-identifier">safe</span>.<span class="ruby-identifier">join</span>
+16:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -291,26 +291,28 @@ Returns a safe email address, by encoding each character in the email
 
 				<div class="method-description">
 					
-					
+					<p>
+Returns a html script tag for <tt>js</tt>
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="script-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/html.rb, line 32</span>
-32:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">script</span>(<span class="ruby-identifier">js</span>)
-33:             <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">js</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Array</span>
-34:                 <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'&lt;script type=&quot;text/javascript&quot; src=&quot;'</span><span class="ruby-operator">+</span><span class="ruby-constant">Url</span>.<span class="ruby-identifier">base</span>()<span class="ruby-operator">+</span><span class="ruby-identifier">js</span><span class="ruby-operator">+</span><span class="ruby-value str">'&quot;&gt;&lt;/script&gt;'</span>
-35:             <span class="ruby-keyword kw">end</span>
-36: 
-37:             <span class="ruby-identifier">to_return</span> = <span class="ruby-value str">''</span>
-38:             <span class="ruby-identifier">js</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-39:                 <span class="ruby-identifier">to_return</span><span class="ruby-operator">+=</span><span class="ruby-value str">'&lt;script type=&quot;text/javascript&quot; src=&quot;'</span><span class="ruby-operator">+</span><span class="ruby-constant">Url</span>.<span class="ruby-identifier">base</span>()<span class="ruby-operator">+</span><span class="ruby-identifier">file</span><span class="ruby-operator">+</span><span class="ruby-value str">'&quot;&gt;&lt;/script&gt;'</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;\n&quot;</span>
-40:             <span class="ruby-keyword kw">end</span>
-41: 
-42:             <span class="ruby-identifier">to_return</span>
-43:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/html.rb, line 33</span>
+33:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">script</span>(<span class="ruby-identifier">js</span>)
+34:             <span class="ruby-keyword kw">unless</span> <span class="ruby-identifier">js</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Array</span>
+35:                 <span class="ruby-keyword kw">return</span> <span class="ruby-value str">'&lt;script type=&quot;text/javascript&quot; src=&quot;'</span><span class="ruby-operator">+</span><span class="ruby-constant">Url</span>.<span class="ruby-identifier">base</span>()<span class="ruby-operator">+</span><span class="ruby-identifier">js</span><span class="ruby-operator">+</span><span class="ruby-value str">'&quot;&gt;&lt;/script&gt;'</span>
+36:             <span class="ruby-keyword kw">end</span>
+37: 
+38:             <span class="ruby-identifier">to_return</span> = <span class="ruby-value str">''</span>
+39:             <span class="ruby-identifier">js</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+40:                 <span class="ruby-identifier">to_return</span><span class="ruby-operator">+=</span><span class="ruby-value str">'&lt;script type=&quot;text/javascript&quot; src=&quot;'</span><span class="ruby-operator">+</span><span class="ruby-constant">Url</span>.<span class="ruby-identifier">base</span>()<span class="ruby-operator">+</span><span class="ruby-identifier">file</span><span class="ruby-operator">+</span><span class="ruby-value str">'&quot;&gt;&lt;/script&gt;'</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot;\n&quot;</span>
+41:             <span class="ruby-keyword kw">end</span>
+42: 
+43:             <span class="ruby-identifier">to_return</span>
+44:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -334,7 +336,9 @@ Returns a safe email address, by encoding each character in the email
 
 				<div class="method-description">
 					
-					
+					<p>
+Returns a html link tag for <tt>css</tt>
+</p>
 					
 
 					

@@ -238,20 +238,22 @@ See the <a href="../View.html">View</a> documentation for usage specifics
 
 				<div class="method-description">
 					
-					
+					<p>
+Standard constructor
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/view/xml.rb, line 9</span>
- 9:             <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">filename</span>)
-10:                 <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">filename</span>)
-11: 
-12:                 <span class="ruby-comment cmt"># Changes the content type to xml for the application</span>
-13:                 <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">raw_response</span>()[<span class="ruby-value str">'Content-Type'</span>] = <span class="ruby-value str">'text/xml'</span>
-14:             <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/view/xml.rb, line 10</span>
+10:             <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">filename</span>)
+11:                 <span class="ruby-keyword kw">super</span>(<span class="ruby-identifier">filename</span>)
+12: 
+13:                 <span class="ruby-comment cmt"># Changes the content type to xml for the application</span>
+14:                 <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">raw_response</span>()[<span class="ruby-value str">'Content-Type'</span>] = <span class="ruby-value str">'text/xml'</span>
+15:             <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

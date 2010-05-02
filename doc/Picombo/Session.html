@@ -218,7 +218,23 @@
 		<h1 class="class">Picombo::Session</h1>
 
 		<div id="description">
-			
+			<h2><a href="Session.html">Session</a> handling class</h2>
+<p>
+In essense, a proxy to the rack session handling methods.
+</p>
+<h2>Example usage</h2>
+<p>
+Writing cookie values
+</p>
+<pre>
+ Picombo::Session.set(:sample, 'this is the content of the session var')
+</pre>
+<p>
+Getting cookie values
+</p>
+<pre>
+ Picombo::Session.get(:sample)</pre>
+
 		</div>
 
 		<!-- Constants -->
@@ -246,21 +262,25 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Retrieves a session item defined by key, returns default if item
+doesn&#8217;t exist You can retreive the entire session by omiting the key
+paramter
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="get-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/session.rb, line 9</span>
- 9:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">default</span> = <span class="ruby-keyword kw">nil</span>)
-10:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">session</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">nil?</span>
-11: 
-12:             <span class="ruby-identifier">result</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">key_string</span>(<span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">session</span>, <span class="ruby-identifier">key</span>)
-13: 
-14:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">default</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">result</span>
-15:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/session.rb, line 22</span>
+22:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span> = <span class="ruby-keyword kw">nil</span>, <span class="ruby-identifier">default</span> = <span class="ruby-keyword kw">nil</span>)
+23:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">session</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">key</span>.<span class="ruby-identifier">nil?</span>
+24: 
+25:             <span class="ruby-identifier">result</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Config</span>.<span class="ruby-identifier">key_string</span>(<span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">session</span>, <span class="ruby-identifier">key</span>)
+26: 
+27:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">result</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-operator">?</span> <span class="ruby-identifier">default</span> <span class="ruby-operator">:</span> <span class="ruby-identifier">result</span>
+28:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -284,17 +304,19 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Initializes the request for cookies
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="init-source">
 <pre>
-   <span class="ruby-comment cmt"># File lib/classes/session.rb, line 5</span>
-5:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">init</span>(<span class="ruby-identifier">req</span>)
-6:             <span class="ruby-identifier">@@req</span> = <span class="ruby-identifier">req</span>
-7:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/session.rb, line 16</span>
+16:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">init</span>(<span class="ruby-identifier">req</span>)
+17:             <span class="ruby-identifier">@@req</span> = <span class="ruby-identifier">req</span>
+18:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -318,17 +340,19 @@
 
 				<div class="method-description">
 					
-					
+					<p>
+Sets a session item defined by key to val
+</p>
 					
 
 					
 					<div class="method-source-code"
 						id="set-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/session.rb, line 17</span>
-17:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>)
-18:             <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">session</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span>
-19:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/session.rb, line 31</span>
+31:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>)
+32:             <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">session</span>[<span class="ruby-identifier">key</span>] = <span class="ruby-identifier">val</span>
+33:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
