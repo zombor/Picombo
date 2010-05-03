@@ -29,7 +29,7 @@ module Picombo
 			def self.render
 				if @@auto_render
 					if Picombo::Core.cli
-						return @@template.render true
+						return @@template.render(true)
 					end
 
 					@@template.render

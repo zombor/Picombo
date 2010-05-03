@@ -110,7 +110,7 @@ module Picombo
 					return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 				end
 			else
-				return Picombo::Controllers::Error_404.new.run_error(uri.inspect)
+				return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 			end
 			Picombo::Event.run('system.post_controller')
 

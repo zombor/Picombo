@@ -5,10 +5,6 @@ module Picombo
 	#
 	# The core class for Picombo. Handles system initialization and other core functionality.
 	class Core
-		# Determines if the request was made on the CLI or not
-		def self.cli
-			@@cli
-		end
 
 		# Standard call function that gets invoked by Rack
 		def call

@@ -56,11 +56,11 @@ module Picombo
 			end
 
 			# Renders the view to the output buffer, or optionally simply returns it if echo is true
-			def render(echo = false)
+			def render(return_output = false)
 				view = ERB::new(File.read(@view_file))
 
-				if echo
-					puts view.result(get_binding())
+				if return_output
+					return view.result(get_binding())
 				else
 					Picombo::Core.response view.result(get_binding())
 				end

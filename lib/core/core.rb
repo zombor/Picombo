@@ -16,6 +16,11 @@ module Picombo
 		@@extension = 'html'
 		@@cli = false
 
+		# Determines if the request was made on the CLI or not
+		def self.cli
+			@@cli
+		end
+
 		# Gets the extension of the request
 		def self.extension
 			@@extension

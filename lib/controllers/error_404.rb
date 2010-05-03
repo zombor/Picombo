@@ -8,7 +8,7 @@ module Picombo
 			def run_error(uri)
 				body = Picombo::View::Core.new('404')
 				body.set('uri', uri)
-				return [404, {'Content-Type' => 'text/html'}, body.render(true)]
+				return [404, {'Content-Type' => 'text/html'}, body.render]
 			end
 		end
 	end
