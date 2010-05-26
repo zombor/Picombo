@@ -56,9 +56,9 @@ module Picombo
 			def test404
 				raise Picombo::E404
 			end
-			
+
 			def mustache
-				
+				@@template.set('body', Picombo::Stache::Test.new.render)
 			end
 		end
 	end

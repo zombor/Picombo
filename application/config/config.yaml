@@ -4,4 +4,4 @@ xss_clean: false
 extensions:
   []
 hooks:
-  [profiler]
+  [profiler, mustache]
