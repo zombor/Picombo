@@ -21,7 +21,7 @@ module Picombo
 			@@auto_render = true
 
 			def initialize
-				@@template = Picombo::View::Core.new(@@template) if @@template.is_a?(String)
+				@@template = Picombo::Stache::Layout.new if @@template.is_a?(String)
 
 				Picombo::Event.add('system.post_controller', 'Picombo::Controllers::Template.render') if @@auto_render
 			end
@@ -29,10 +29,10 @@ module Picombo
 			def self.render
 				if @@auto_render
 					if Picombo::Core.cli
-						return @@template.render(true)
+						return @@template.render
 					end
 
-					@@template.render
+					@@template.output
 				end
 			end
 		end

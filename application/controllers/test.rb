@@ -9,10 +9,7 @@ module Picombo
 				Picombo::Event.add('test', 'Eventtest::Foobar.new().test')
 
 				Picombo::Session.instance.set(:test, 'val')
-				body = Picombo::View::Core.new('test')
-				body.set('whatever', 'testing a view variable')
-
-				@@template.set('body', body.render(true))
+				@@template[:body] = Picombo::Stache::Test.render
 
 				Picombo::Event.run('test')
 			end
@@ -21,13 +18,6 @@ module Picombo
 				cache = Picombo::Cache.new
 				cache.set(:foo, '<h1>It Works!</h1><p>This is a test.</p>')
 				Picombo::Core.response(cache.get(:foo))
-			end
-
-			def xml
-				Picombo::Event.clear!('system.display')
-				@@template = Picombo::View::XML.new('test.xml')
-				@@template.set('name', 'Picombo!')
-				@@template.set('language', 'ruby')
 			end
 
 			def db_insert(value, test)
@@ -55,10 +45,6 @@ module Picombo
 
 			def test404
 				raise Picombo::E404
-			end
-
-			def mustache
-				@@template.set('body', Picombo::Stache::Test.new.render)
 			end
 		end
 	end

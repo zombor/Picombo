@@ -2,7 +2,7 @@ module Picombo
 	module Stache
 		class Test < Mustache
 
-			self.template_path = 'application/views'
+			self.template = File.open(Picombo::Core.find_file('views', 'test', true, 'mustache').shift).read
 
 			def whatever
 			  "Testing Mustache"

@@ -16,3 +16,9 @@ module Picombo
 		end
 	end
 end
+
+class Mustache
+	def output
+		Picombo::Core.response(render)
+	end
+end
