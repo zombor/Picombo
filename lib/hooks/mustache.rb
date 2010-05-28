@@ -6,7 +6,7 @@ module Picombo
 		def Stache.const_missing(name)
 			filename = name.to_s
 
-			require 'views/'+filename.downcase
+			require 'views/'+filename.downcase.gsub(/_/, '/')
 
 			raise name.to_s+' not found!' if ! const_defined?(name)
 

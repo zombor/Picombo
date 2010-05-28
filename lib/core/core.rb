@@ -154,7 +154,7 @@ module Picombo
 	def Picombo.const_missing(name)
 		filename = name.to_s
 
-		require 'classes/'+filename
+		require 'classes/'+filename.gsub(/_/, '/')
 
 		raise filename+' not found!' if ! const_defined?(name)
 
@@ -184,7 +184,7 @@ module Picombo
 		def Models.const_missing(name)
 			filename = name.to_s
 
-			require 'models/'+filename.downcase
+			require 'models/'+filename.downcase.gsub(/_/, '/')
 
 			raise filename+' not found!' if ! const_defined?(name)
 
@@ -233,7 +233,7 @@ module Picombo
 		def Controllers.const_missing(name)
 			filename = name.to_s
 
-			require 'controllers/'+filename
+			require 'controllers/'+filename.gsub(/_/, '/')
 
 			raise LoadError if ! const_defined?(name)
 
