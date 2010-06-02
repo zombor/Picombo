@@ -192,7 +192,7 @@ module Picombo
 			end
 
 			# make sure to remove the GET from any of the parameters
-			{:controller => @@rsegments[0].split('?').at(0), :method => @@rsegments[1], :params => params}
+			{:controller => @@rsegments[0].split('?').at(0).gsub('.', '').downcase, :method => @@rsegments[1], :params => params}
 		end
 	end
 end
