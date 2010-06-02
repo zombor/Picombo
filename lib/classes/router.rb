@@ -144,7 +144,7 @@ module Picombo
 		# Takes a uri path string and determines the controller, method and any get parameters
 		# Uses the routes config file for translation
 		def self.process_uri(path)
-puts path.inspect
+
 			# Load routes
 			Picombo::Core.find_file('config', 'routes').each do |file|
 				require file
