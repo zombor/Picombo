@@ -6,9 +6,9 @@ module Picombo
 		class Error_404
 			# Displays a 404 message for the current uri
 			def run_error(uri)
-				body = Picombo::View::Core.new('404')
-				body.set('uri', uri)
-				return [404, {'Content-Type' => 'text/html'}, body.render]
+				body = Picombo::Stache::Error_404.new
+				body.uri = uri
+				return [404, {'Content-Type' => 'text/html'}, body.output]
 			end
 		end
 	end
