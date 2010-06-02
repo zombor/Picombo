@@ -76,8 +76,7 @@ module Picombo
 			Picombo::Event.run('system.pre_router')
 			# Find the controller and method
 			uri = @@req.path
-			path = uri[0..-(File.extname(uri).length+1)]
-			uri = Picombo::Router.process_uri(path)
+			uri = Picombo::Router.process_uri(uri)
 
 			# Let events have the ability to modify the uri array
 			Picombo::Event.run('system.post_router', uri)
@@ -145,7 +144,7 @@ module Picombo
 		# Takes a uri path string and determines the controller, method and any get parameters
 		# Uses the routes config file for translation
 		def self.process_uri(path)
-
+puts path.inspect
 			# Load routes
 			Picombo::Core.find_file('config', 'routes').each do |file|
 				require file
