@@ -10,9 +10,9 @@ module Picombo
 	# The first kind of route is an exact match route. This will look for a URI match in the keys of the routes file. ex: +Picombo::Router.add('foobar/baz', 'controller/method')+
 	#
 	# You can also use regex routes for more powerful routing:
-	# * A catch-all route: Picombo::Router.add('(.+)', 'controller/method')
-	# * Routing all second URI segments to the index method: Picombo::Router.add('foobar/(.+)', 'foobar/index')
-	# * Picombo::Router.add('([a-z]{2})', 'chamber/video/\1')
+	# * A catch-all route: Picombo::Router.add(Regexp.new(/(.+)/), 'controller/method')
+	# * Routing all second URI segments to the index method: Picombo::Router.add(Regexp.new(/foobar\/(.+)/), 'foobar/index')
+	# * Picombo::Router.add(Regexp.new(/([a-z]{2})/), 'chamber/video/\1')
 	#
 	# === Using lambdas for routes
 	# You can use lamba methods for complex routing schemes that rely on extra logic. The first parameter to the lambda method is the source uri as a string
@@ -165,8 +165,9 @@ module Picombo
 					if destination[:val].is_a?(Proc)
 						route = destination[:val].call(@@current_uri)
 						return route if ! route.nil?
-					else
-						if Regexp.new(route).match(@@current_uri)
+					elsif route.is_a?(Regexp)
+						match = route.match(@@current_uri)
+						if ! match.nil? and match.length > 1
 							routed_uri.gsub!(Regexp.new(route), destination[:val])
 							@@rsegments = routed_uri.split('/')[1..-1]
 						end
