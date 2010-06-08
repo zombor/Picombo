@@ -139,11 +139,19 @@ module Picombo
 
 			$LOAD_PATH.each do |path|
 				if File.directory?(path+'/'+directory)
-					files.concat(Dir.new(path+'/'+directory).entries.collect! {|file|
+					Dir.new(path+'/'+directory).entries.each do |file|
 						unless (file == '.' or file == '..')
-							path+directory+'/'+file
+							if File.directory?(path+directory+'/'+file)
+								list_files(directory+'/'+file).each do |sub_file|
+									unless (sub_file == '.' or sub_file == '..' or File.directory?(sub_file))
+										files << sub_file
+									end
+								end
+							else
+								files << path+directory+'/'+file
+							end
 						end
-					})
+					end
 				end
 			end
 			files.delete('.')
@@ -235,7 +243,7 @@ module Picombo
 		def Controllers.const_missing(name)
 			filename = name.to_s
 
-			require 'controllers/'+filename.gsub(/_/, '/')
+			require 'controllers/'+filename.downcase.gsub(/_/, '/')
 
 			raise LoadError if ! const_defined?(name)
 

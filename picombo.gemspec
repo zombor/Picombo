@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{picombo}
-  s.version = "0.2.1"
+  s.version = "0.2.5"
   s.date = %q{2010-06-08}
   s.authors = ["Jeremy Bush"]
   s.email = %q{contractfrombelow@gmail.com}
@@ -35,7 +35,6 @@ Gem::Specification.new do |s|
 	'./lib/controllers/template.rb',
 	'./lib/core/core.rb',
 	'./lib/core/core_cli.rb',
-	'./lib/hooks/datamapper.rb',
 	'./lib/hooks/mustache.rb',
 	'./lib/hooks/profiler.rb',
 	'./lib/picombo.rb',
