@@ -8,7 +8,7 @@ class TestRouter < Test::Unit::TestCase
 		$LOAD_PATH.unshift(File.expand_path(Dir.getwd+'../..')+'/')
 		$LOAD_PATH.unshift(File.expand_path(Dir.getwd+'../../../application')+'/')
 
-		Picombo::Router.add('foo', 'bar/index')
+		Picombo::Router.add('/foo', 'bar/index')
 
 		Picombo::Router.add('bar',
 			lambda{ |path|
@@ -60,6 +60,6 @@ class TestRouter < Test::Unit::TestCase
 		)
 
 		# This one doesn't have a reverse route
-		assert_equal(nil, Picombo::Router.generate('foo'))
+		assert_equal(nil, Picombo::Router.generate('/foo'))
 	end
 end
