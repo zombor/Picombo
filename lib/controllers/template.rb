@@ -11,28 +11,28 @@ module Picombo
 		# 		super
 		# 	end
 		#
-		# The default template view is called 'template' which is located in views/template.rhtml. You can change this on a per controller basis by changing the @@template vartiable in the controller:
+		# The default template view is called 'layout' which is located in views/layout.rb. You can change this on a per controller basis by changing the @template vartiable in the controller's constructor:
 		#
-		# 	@@template = 'foobar_template'
+		# 	@template = 'foobar_template'
 		#
-		# Now, you can use @@template in your controller and it will always use the same template. The template will automatically render at the end of the controller execution, so there is no need to call @@template.render manually
+		# Now, you can use @template in your controller and it will always use the same template. The template will automatically render at the end of the controller execution, so there is no need to call @template.output manually
 		class Template
-			@@template = 'template'
-			@@auto_render = true
-
 			def initialize
-				@@template = Picombo::Stache::Layout.new if @@template.is_a?(String)
+				@template = 'layout' if @template.nil?
+				@auto_render = true
 
-				Picombo::Event.add('system.post_controller', 'Picombo::Controllers::Template.render') if @@auto_render
+				@template = Picombo::Stache::const_get(@template.capitalize).new if @template.is_a?(String)
+
+				Picombo::Event.add('system.post_controller', [self, 'render']) if @auto_render
 			end
 
-			def self.render
-				if @@auto_render
+			def render
+				if @auto_render
 					if Picombo::Core.cli
-						return @@template.render
+						return @template.render
 					end
 
-					@@template.output
+					@template.output
 				end
 			end
 		end
