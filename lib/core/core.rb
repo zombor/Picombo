@@ -156,7 +156,7 @@ module Picombo
 	def Picombo.const_missing(name)
 		filename = name.to_s
 
-		require 'classes/'+filename.gsub(/_/, '/')
+		require 'classes/'+filename.downcase.gsub(/_/, '/')
 
 		raise filename+' not found!' if ! const_defined?(name)
 
