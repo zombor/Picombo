@@ -36,6 +36,8 @@ module Picombo
 			Picombo::Bench.instance.start('application')
 			Picombo::Bench.instance.start('loading')
 
+			Picombo::Event.clear!
+
 			@@env = env
 			@@req = Rack::Request.new(env)
 

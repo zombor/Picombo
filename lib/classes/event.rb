@@ -76,8 +76,8 @@ module Picombo
 		#
 		# Remove one or all of the callbacks from a given event.
 		#
-		def self.clear!(name, callback = nil)
-			return false unless @@events.include?(name)
+		def self.clear!(name = nil, callback = nil)
+			@@events = {} if name.nil?
 
 			if callback.nil?
 				@@events[name] = []
