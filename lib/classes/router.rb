@@ -86,7 +86,7 @@ module Picombo
 			# Try and load the controller class
 			begin
 				controller = Picombo::Controllers::const_get(uri[:controller].capitalize!).new
-			rescue LoadError
+			rescue LoadError, NameError
 				return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 			end
 
