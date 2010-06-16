@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.name = %q{picombo}
-  s.version = "0.3.0"
-  s.date = %q{2010-06-15}
+  s.version = "0.3.1"
+  s.date = %q{2010-06-16}
   s.authors = ["Jeremy Bush"]
   s.email = %q{contractfrombelow@gmail.com}
   s.summary = %q{A lightweight MVC web framework}

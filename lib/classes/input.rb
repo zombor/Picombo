@@ -7,13 +7,6 @@ module Picombo
 	#
 	# * To return the entire input hash, omit the key
 	# * If the key is not found, the default parameter is returned, by default nil
-	#
-	# === XSS Filtering
-	#
-	# in the main config file, there is an xss_clean option. If you set this to true,
-	# all GET and POST variables will be scanned and cleaned of script data. You can manually
-	# filter strings by using:
-	# 	Picombo::Input.instance.xss_clean(str)
 	class Input
 		include Singleton
 
@@ -21,16 +14,6 @@ module Picombo
 		def set_request(req)
 			@req = req
 
-			if Picombo::Config.get('config.xss_clean')
-				@req.GET().each do |key, value|
-					Picombo::Log.write(:debug, 'Cleaning GET key: '+key)
-					@req.GET()[key] = Picombo::Security.xss_clean(value, Picombo::Config.get('config.xss_clean'))
-				end
-				@req.POST().each do |key, value|
-					Picombo::Log.write(:debug, 'Cleaning POST key: '+key)
-					@req.POST()[key] = Picombo::Security.xss_clean(value, Picombo::Config.get('config.xss_clean'))
-				end
-			end
 			Picombo::Log.write(:debug, 'Input Library initialized')
 		end
 
@@ -43,6 +26,16 @@ module Picombo
 			return get[key] if get.has_key?(key)
 
 			default
+		end
+
+		def query_string(hash)
+			temp = []
+
+			hash.each do |key, value|
+				temp << key+'='+value
+			end
+
+			temp.join('&')
 		end
 
 		# Retrieves a POST item by key. If the key doesn't exist, return default
