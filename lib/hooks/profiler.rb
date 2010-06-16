@@ -1,3 +1,3 @@
 Picombo::Event.add('system.display') do
-	Picombo::View::Core.new('bench/footer').render()
+	Picombo::Stache::Bench_Footer.new.output
 end

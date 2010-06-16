@@ -46,7 +46,7 @@ module Picombo
 			# Load hooks
 			Picombo::Config.get('config.hooks').each do |hook|
 				Picombo::Core.find_file('hooks', hook).each do |file|
-					require file
+					load file
 				end
 			end
 
