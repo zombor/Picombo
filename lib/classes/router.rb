@@ -152,6 +152,7 @@ module Picombo
 
 			router_parts = path == '/' ? ('/'+@@routes['_default'][:val]).split('/') : path.split('/')
 			@@current_uri = path.split('?').at(0)
+			@@current_uri.slice!(0)
 			@@segments = @@current_uri.split('/')[1..-1]
 			@@rsegments = router_parts[1..-1]
 			routed_uri = @@current_uri
