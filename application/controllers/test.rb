@@ -9,7 +9,7 @@ module Picombo
 				Picombo::Event.add('test', 'Eventtest::Foobar.new().test')
 
 				Picombo::Session.instance.set(:test, 'val')
-				@@template[:body] = Picombo::Stache::Test.render
+				@template[:body] = Picombo::Stache::Test.render
 
 				Picombo::Event.run('test')
 			end
