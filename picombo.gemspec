@@ -1,12 +1,14 @@
 Gem::Specification.new do |s|
   s.name = %q{picombo}
-  s.version = "0.2.5"
+  s.version = "0.2.6"
   s.date = %q{2010-06-08}
   s.authors = ["Jeremy Bush"]
   s.email = %q{contractfrombelow@gmail.com}
   s.summary = %q{A lightweight MVC web framework}
   s.homepage = %q{http://www.picombo.net/}
   s.description = %q{Picombo is a lightweight MVC web framework that enables you to create websites quickly.}
+  s.add_dependency('rack', '>= 1.0.0')
+  s.add_dependency('mustache', '>= 0.10.0')
   s.files = [ 
 	'./lib/classes/bench.rb',
 	'./lib/classes/cache',
