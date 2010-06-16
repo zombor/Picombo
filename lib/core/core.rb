@@ -13,21 +13,11 @@ module Picombo
 	#
 	# The core class for Picombo. Handles system initialization and other core functionality.
 	class Core
-		@@extension = 'html'
 		@@cli = false
 
 		# Determines if the request was made on the CLI or not
 		def self.cli
 			@@cli
-		end
-
-		# Gets the extension of the request
-		def self.extension
-			@@extension
-		end
-		# Assigns the extension of the request
-		def self.extension=(extension)
-			@@extension = extension
 		end
 
 		# Standard call function that gets invoked by Rack
@@ -41,11 +31,7 @@ module Picombo
 			@@env = env
 			@@req = Rack::Request.new(env)
 
-			@@extension = File.extname(@@req.path)[1..-1]
-			@@extension = 'html' if @@extension.nil?
-
 			@@response = Rack::Response.new
-			#@@response['Content-Type'] = Picombo::Config.load('mimes.'+@@extension)[0]
 			@@response['Content-Type'] = 'text/html'
 			@@response.status = 200
 			@@redirect = []
