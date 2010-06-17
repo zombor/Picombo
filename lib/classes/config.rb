@@ -10,7 +10,6 @@ module Picombo
 	# === Overview
 	# There are several built in config file types:
 	#  * config.yaml
-	#  * datamapper.yaml
 	#  * cache.yaml
 	#  * log.yaml
 	#  * mimes.yaml
@@ -23,18 +22,18 @@ module Picombo
 	# To call config values, use the Picombo::Config.get method. The first parameter is the path of your config value, using dot notation. With dot notation, the first part is the filename, and everything after that is the path inside the file.
 	#
 	# ==== Example
-	# For the following file (datamapper.yaml):
+	# For the following file (config.yaml):
 	#
-	# 	default:
-	# 	 driver: mysql
-	# 	 host: localhost
-	# 	 database: picom_db
-	# 	 username: picom_u
-	# 	 password: picom_p
+	# 	site_domain: localhost:3000
+	# 	protocol: http
+	# 	extensions:
+	# 	  []
+	# 	hooks:
+	# 	  [profiler]
 	#
-	# You can get the database config value like:
+	# You can get the core config values like:
 	#
-	# Picombo::Config.get('datamapper.default.database')
+	# Picombo::Config.get('core.protocol')
 	class Config
 		include Enumerable
 

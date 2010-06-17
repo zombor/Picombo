@@ -211,7 +211,6 @@ There are several built in config file types:
 </p>
 <pre>
  * config.yaml
- * datamapper.yaml
  * cache.yaml
  * log.yaml
  * mimes.yaml
@@ -232,21 +231,21 @@ path inside the file.
 </p>
 <h4>Example</h4>
 <p>
-For the following file (datamapper.yaml):
+For the following file (config.yaml):
 </p>
 <pre>
- default:
-  driver: mysql
-  host: localhost
-  database: picom_db
-  username: picom_u
-  password: picom_p
+ site_domain: localhost:3000
+ protocol: http
+ extensions:
+   []
+ hooks:
+   [profiler]
 </pre>
 <p>
-You can get the database config value like:
+You can get the core config values like:
 </p>
 <p>
-Picombo::Config.get(&#8216;datamapper.default.database&#8217;)
+Picombo::Config.get(&#8216;core.protocol&#8217;)
 </p>
 
 		</div>
@@ -285,10 +284,10 @@ Clears the internal cache for a config file(s)
 					<div class="method-source-code"
 						id="clear-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/config.rb, line 83</span>
-83:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">clear</span>(<span class="ruby-identifier">group</span>)
-84:             <span class="ruby-identifier">@@cache</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">group</span>)
-85:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/config.rb, line 82</span>
+82:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">clear</span>(<span class="ruby-identifier">group</span>)
+83:             <span class="ruby-identifier">@@cache</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">group</span>)
+84:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -321,10 +320,10 @@ Define an each method, required for Enumerable.
 					<div class="method-source-code"
 						id="each-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/classes/config.rb, line 113</span>
-113:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">each</span>(<span class="ruby-identifier">file</span>)
-114: 
-115:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/classes/config.rb, line 112</span>
+112:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">each</span>(<span class="ruby-identifier">file</span>)
+113: 
+114:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -357,18 +356,18 @@ Retrieves a config item in dot notation
 					<div class="method-source-code"
 						id="get-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/config.rb, line 70</span>
-70:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">required</span> = <span class="ruby-keyword kw">true</span>)
-71:             <span class="ruby-comment cmt"># get the group name from the key</span>
-72:             <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'.'</span>)
-73:             <span class="ruby-identifier">group</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">shift</span>
-74: 
-75:             <span class="ruby-identifier">value</span> = <span class="ruby-identifier">key_string</span>(<span class="ruby-identifier">load</span>(<span class="ruby-identifier">group</span>), <span class="ruby-identifier">key</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>))
-76: 
-77:             <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Config key '&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">key</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>)<span class="ruby-operator">+</span><span class="ruby-value str">&quot;' not found!!&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">required</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
-78: 
-79:             <span class="ruby-identifier">value</span>
-80:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/config.rb, line 69</span>
+69:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">required</span> = <span class="ruby-keyword kw">true</span>)
+70:             <span class="ruby-comment cmt"># get the group name from the key</span>
+71:             <span class="ruby-identifier">key</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'.'</span>)
+72:             <span class="ruby-identifier">group</span> = <span class="ruby-identifier">key</span>.<span class="ruby-identifier">shift</span>
+73: 
+74:             <span class="ruby-identifier">value</span> = <span class="ruby-identifier">key_string</span>(<span class="ruby-identifier">load</span>(<span class="ruby-identifier">group</span>), <span class="ruby-identifier">key</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>))
+75: 
+76:             <span class="ruby-identifier">raise</span> <span class="ruby-value str">&quot;Config key '&quot;</span><span class="ruby-operator">+</span><span class="ruby-identifier">key</span>.<span class="ruby-identifier">join</span>(<span class="ruby-value str">'.'</span>)<span class="ruby-operator">+</span><span class="ruby-value str">&quot;' not found!!&quot;</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">required</span> <span class="ruby-operator">&amp;&amp;</span> <span class="ruby-identifier">value</span>.<span class="ruby-identifier">nil?</span>
+77: 
+78:             <span class="ruby-identifier">value</span>
+79:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -401,28 +400,28 @@ Allows searching an hash by dot seperated strings
 					<div class="method-source-code"
 						id="key-string-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/classes/config.rb, line 88</span>
- 88:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">key_string</span>(<span class="ruby-identifier">hash</span>, <span class="ruby-identifier">keys</span>)
- 89:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
- 90: 
- 91:             <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'.'</span>)
- 92: 
- 93:             <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
- 94:                 <span class="ruby-identifier">key</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">shift</span>
- 95: 
- 96:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">key</span>
- 97:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span> <span class="ruby-keyword kw">and</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">empty?</span>
- 98:                         <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>]
- 99:                     <span class="ruby-keyword kw">else</span>
-100:                         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>]
-101:                     <span class="ruby-keyword kw">end</span>
-102:                 <span class="ruby-keyword kw">else</span>
-103:                     <span class="ruby-keyword kw">break</span>
-104:                 <span class="ruby-keyword kw">end</span>
-105:             <span class="ruby-keyword kw">end</span>
-106: 
-107:             <span class="ruby-keyword kw">nil</span>
-108:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/classes/config.rb, line 87</span>
+ 87:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">key_string</span>(<span class="ruby-identifier">hash</span>, <span class="ruby-identifier">keys</span>)
+ 88:             <span class="ruby-keyword kw">return</span> <span class="ruby-keyword kw">false</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span>
+ 89: 
+ 90:             <span class="ruby-identifier">keys</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'.'</span>)
+ 91: 
+ 92:             <span class="ruby-keyword kw">until</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">==</span> <span class="ruby-value">0</span>
+ 93:                 <span class="ruby-identifier">key</span> = <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">shift</span>
+ 94: 
+ 95:                 <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>.<span class="ruby-identifier">has_key?</span> <span class="ruby-identifier">key</span>
+ 96:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>].<span class="ruby-identifier">is_a?</span> <span class="ruby-constant">Hash</span> <span class="ruby-keyword kw">and</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">keys</span>.<span class="ruby-identifier">empty?</span>
+ 97:                         <span class="ruby-identifier">hash</span> = <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>]
+ 98:                     <span class="ruby-keyword kw">else</span>
+ 99:                         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">hash</span>[<span class="ruby-identifier">key</span>]
+100:                     <span class="ruby-keyword kw">end</span>
+101:                 <span class="ruby-keyword kw">else</span>
+102:                     <span class="ruby-keyword kw">break</span>
+103:                 <span class="ruby-keyword kw">end</span>
+104:             <span class="ruby-keyword kw">end</span>
+105: 
+106:             <span class="ruby-keyword kw">nil</span>
+107:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -455,26 +454,26 @@ Loads configuration files by name
 					<div class="method-source-code"
 						id="load-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/config.rb, line 45</span>
-45:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">name</span>)
-46:             <span class="ruby-comment cmt"># Look for this config item in the cache</span>
-47:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">@@cache</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">name</span>)
-48:                 <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">@@cache</span>[<span class="ruby-identifier">name</span>]
-49:             <span class="ruby-keyword kw">end</span>
-50: 
-51:             <span class="ruby-identifier">configuration</span>, <span class="ruby-identifier">files</span> = {}, <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">find_file</span>(<span class="ruby-value str">'config'</span>, <span class="ruby-identifier">name</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-value str">'yaml'</span>)
-52: 
-53:             <span class="ruby-identifier">files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-54:                 <span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">file</span>)
-55:             <span class="ruby-keyword kw">end</span>
-56: 
-57:             <span class="ruby-comment cmt"># Set the internal cache</span>
-58:             <span class="ruby-identifier">@@cache</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">configuration</span>
-59: 
-60:             <span class="ruby-identifier">configuration</span>
-61:             <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
-62:             <span class="ruby-comment cmt"># A config file couldn't be loaded...</span>
-63:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/config.rb, line 44</span>
+44:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">load</span>(<span class="ruby-identifier">name</span>)
+45:             <span class="ruby-comment cmt"># Look for this config item in the cache</span>
+46:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">@@cache</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">name</span>)
+47:                 <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">@@cache</span>[<span class="ruby-identifier">name</span>]
+48:             <span class="ruby-keyword kw">end</span>
+49: 
+50:             <span class="ruby-identifier">configuration</span>, <span class="ruby-identifier">files</span> = {}, <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">find_file</span>(<span class="ruby-value str">'config'</span>, <span class="ruby-identifier">name</span>, <span class="ruby-keyword kw">false</span>, <span class="ruby-value str">'yaml'</span>)
+51: 
+52:             <span class="ruby-identifier">files</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+53:                 <span class="ruby-identifier">configuration</span>.<span class="ruby-identifier">merge!</span> <span class="ruby-constant">YAML</span><span class="ruby-operator">::</span><span class="ruby-identifier">load_file</span>(<span class="ruby-identifier">file</span>)
+54:             <span class="ruby-keyword kw">end</span>
+55: 
+56:             <span class="ruby-comment cmt"># Set the internal cache</span>
+57:             <span class="ruby-identifier">@@cache</span>[<span class="ruby-identifier">name</span>] = <span class="ruby-identifier">configuration</span>
+58: 
+59:             <span class="ruby-identifier">configuration</span>
+60:             <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Errno</span><span class="ruby-operator">::</span><span class="ruby-constant">ENOENT</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">e</span>
+61:             <span class="ruby-comment cmt"># A config file couldn't be loaded...</span>
+62:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -507,9 +506,9 @@ Used for dynamic config setting. Not implimented yet
 					<div class="method-source-code"
 						id="set-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/config.rb, line 66</span>
-66:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
-67:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/config.rb, line 65</span>
+65:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span>)
+66:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

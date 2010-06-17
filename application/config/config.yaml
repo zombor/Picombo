@@ -3,4 +3,4 @@ protocol: http
 extensions:
   []
 hooks:
-  [profiler, mustache]
+  [profiler]
