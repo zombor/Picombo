@@ -166,7 +166,17 @@
 		<h1 class="class">Picombo::E404</h1>
 
 		<div id="description">
-			<h2>Main 404 exception class. Used to detect 404 errors in the app</h2>
+			<h2>404 Exception</h2>
+<p>
+Main 404 exception class. Used to detect 404 errors in the app.
+</p>
+<p>
+When you raise a <a href="E404.html">E404</a> exception, <a
+href="../Picombo.html">Picombo</a> will instantiate the <a
+href="Controllers/Error_404.html">Picombo::Controllers::Error_404</a>
+controller and execute it&#8217;s run_error() method with the uri passed
+in. You can override how your 404 pages look by overloading this class.
+</p>
 
 		</div>
 
