@@ -22,6 +22,14 @@ module Picombo
 	# 				{:controller => 'city', :method => 'index', :params => Regexp.last_match[2,3]}
 	# 		end
 	#  })
+	# 
+	# === Route Hashes
+	# The router uses route hashes as shown above to determine which controller/method should be run. It has the following properties:
+	#  :controller - The controller name to execute
+	#  :method     - The method of the controller to run
+	#  :param      - The parameters to pass to the controller method
+	# 
+	# If you use lambda routes, you *must* return a properly formatted routing hash.
 
 	class Router
 		@@req = nil

@@ -38,8 +38,8 @@
 				<div class="section-body">
 					<ul>
 					
-						<li><a href="../lib/hooks/mustache_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/hooks/mustache.rb">lib/hooks/mustache.rb</a></li>
+						<li><a href="../lib/classes/stache_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/classes/stache.rb">lib/classes/stache.rb</a></li>
 					
 						<li><a href="../lib/views/bench/footer_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/views/bench/footer.rb">lib/views/bench/footer.rb</a></li>
@@ -185,7 +185,37 @@
 		<h1 class="module">Picombo::Stache</h1>
 
 		<div id="description">
-			
+			<h2><a href="../Mustache.html">Mustache</a> Module</h2>
+<p>
+<a href="../Picombo.html">Picombo</a> comes with builtin support for <a
+href="../Mustache.html">Mustache</a> view templates
+</p>
+<h3>How to use</h3>
+<p>
+All view files go into the views folder. You need a .rb class along with a
+.mustache template file. Your view class files should extend the <a
+href="../Mustache.html">Mustache</a> class:
+</p>
+<pre>
+ module Picombo
+     module Stache
+         class Home_Index &lt; Mustache
+             self.template = File.open(Picombo::Core.find_file('views', 'home/index', true, 'mustache').shift).read
+         end
+     end
+ end
+</pre>
+<p>
+You should always set the template in your class. In most scenarios,
+it&#8217;s easiest to read it in from a file as displayed above. You can
+also specify a raw string template there and not do the file read.
+</p>
+<p>
+To render the template to your browser, use the output method:
+</p>
+<pre>
+ Picombo::Stache::Home_Index.new.output</pre>
+
 		</div>
 
 		<!-- Constants -->
@@ -222,18 +252,18 @@ Autoloader for missing mustache classes.
 					<div class="method-source-code"
 						id="const-missing-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/hooks/mustache.rb, line 6</span>
- 6:         <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Stache</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
- 7:             <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
- 8: 
- 9:             <span class="ruby-identifier">require</span> <span class="ruby-value str">'views/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'/'</span>)
-10: 
-11:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
-12: 
-13:             <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
-14:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
-15:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
-16:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/stache.rb, line 26</span>
+26:         <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Stache</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
+27:             <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+28: 
+29:             <span class="ruby-identifier">require</span> <span class="ruby-value str">'views/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'/'</span>)
+30: 
+31:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+32: 
+33:             <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
+34:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
+35:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
+36:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

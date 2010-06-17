@@ -251,7 +251,22 @@ string
          if Regexp.new('(complex|foobar)/([a-z]{2})/(.+)').match(path)
              {:controller =&gt; 'city', :method =&gt; 'index', :params =&gt; Regexp.last_match[2,3]}
      end
- })</pre>
+ })
+</pre>
+<h3>Route Hashes</h3>
+<p>
+The router uses route hashes as shown above to determine which
+controller/method should be run. It has the following properties:
+</p>
+<pre>
+ :controller - The controller name to execute
+ :method     - The method of the controller to run
+ :param      - The parameters to pass to the controller method
+</pre>
+<p>
+If you use lambda routes, you <b>must</b> return a properly formatted
+routing hash.
+</p>
 
 		</div>
 
@@ -299,10 +314,10 @@ val - the destination of the route (optionally a lambda for complex routes)
 					<div class="method-source-code"
 						id="add-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/classes/router.rb, line 126</span>
-126:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>, <span class="ruby-identifier">style</span> = <span class="ruby-keyword kw">nil</span>)
-127:             <span class="ruby-identifier">@@routes</span>[<span class="ruby-identifier">key</span>] = {<span class="ruby-value">:val</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">val</span>, <span class="ruby-value">:generate</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">style</span>}
-128:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/classes/router.rb, line 134</span>
+134:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">add</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>, <span class="ruby-identifier">style</span> = <span class="ruby-keyword kw">nil</span>)
+135:             <span class="ruby-identifier">@@routes</span>[<span class="ruby-identifier">key</span>] = {<span class="ruby-value">:val</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">val</span>, <span class="ruby-value">:generate</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">style</span>}
+136:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -335,10 +350,10 @@ Reads the current controller of the request
 					<div class="method-source-code"
 						id="controller-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 55</span>
-55:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">controller</span>
-56:             <span class="ruby-identifier">@@controller</span>
-57:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 63</span>
+63:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">controller</span>
+64:             <span class="ruby-identifier">@@controller</span>
+65:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -371,10 +386,10 @@ Assigns the current controller of the request
 					<div class="method-source-code"
 						id="controller--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 51</span>
-51:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">controller=</span>(<span class="ruby-identifier">controller</span>)
-52:             <span class="ruby-identifier">@@controller</span> = <span class="ruby-identifier">controller</span>
-53:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 59</span>
+59:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">controller=</span>(<span class="ruby-identifier">controller</span>)
+60:             <span class="ruby-identifier">@@controller</span> = <span class="ruby-identifier">controller</span>
+61:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -407,10 +422,10 @@ Reads the current uri of the request
 					<div class="method-source-code"
 						id="current-uri-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 35</span>
-35:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_uri</span>
-36:             <span class="ruby-identifier">@@current_uri</span>
-37:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 43</span>
+43:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_uri</span>
+44:             <span class="ruby-identifier">@@current_uri</span>
+45:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -443,10 +458,10 @@ Assigns the current uri of the request
 					<div class="method-source-code"
 						id="current-uri--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 31</span>
-31:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_uri=</span>(<span class="ruby-identifier">current_uri</span>)
-32:             <span class="ruby-identifier">@@current_uri</span> = <span class="ruby-identifier">current_uri</span>
-33:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 39</span>
+39:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">current_uri=</span>(<span class="ruby-identifier">current_uri</span>)
+40:             <span class="ruby-identifier">@@current_uri</span> = <span class="ruby-identifier">current_uri</span>
+41:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -479,19 +494,19 @@ Generates a routed URI based on paramaters
 					<div class="method-source-code"
 						id="generate-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/classes/router.rb, line 131</span>
-131:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">generate</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">params</span> = [])
-132:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'The route: &quot;'</span><span class="ruby-operator">+</span><span class="ruby-identifier">key</span><span class="ruby-operator">+</span><span class="ruby-value str">'&quot; doesn\t exist!'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">@@routes</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
-133:             <span class="ruby-identifier">route</span> = <span class="ruby-identifier">@@routes</span>[<span class="ruby-identifier">key</span>]
-134: 
-135:             <span class="ruby-identifier">routing_string</span>  = <span class="ruby-identifier">route</span>[<span class="ruby-value">:generate</span>]
-136: 
-137:             <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
-138:                 <span class="ruby-identifier">routing_string</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-value str">'{'</span><span class="ruby-operator">+</span><span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-value str">'}'</span>, <span class="ruby-identifier">value</span>)
-139:             <span class="ruby-keyword kw">end</span>
-140: 
-141:             <span class="ruby-identifier">routing_string</span>
-142:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/classes/router.rb, line 139</span>
+139:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">generate</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">params</span> = [])
+140:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">ArgumentError</span>.<span class="ruby-identifier">new</span>(<span class="ruby-value str">'The route: &quot;'</span><span class="ruby-operator">+</span><span class="ruby-identifier">key</span><span class="ruby-operator">+</span><span class="ruby-value str">'&quot; doesn\t exist!'</span>) <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">@@routes</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">key</span>)
+141:             <span class="ruby-identifier">route</span> = <span class="ruby-identifier">@@routes</span>[<span class="ruby-identifier">key</span>]
+142: 
+143:             <span class="ruby-identifier">routing_string</span>  = <span class="ruby-identifier">route</span>[<span class="ruby-value">:generate</span>]
+144: 
+145:             <span class="ruby-identifier">params</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">key</span>, <span class="ruby-identifier">value</span><span class="ruby-operator">|</span>
+146:                 <span class="ruby-identifier">routing_string</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-value str">'{'</span><span class="ruby-operator">+</span><span class="ruby-identifier">key</span>.<span class="ruby-identifier">to_s</span><span class="ruby-operator">+</span><span class="ruby-value str">'}'</span>, <span class="ruby-identifier">value</span>)
+147:             <span class="ruby-keyword kw">end</span>
+148: 
+149:             <span class="ruby-identifier">routing_string</span>
+150:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -524,10 +539,10 @@ Reads the current method of the request
 					<div class="method-source-code"
 						id="method-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 63</span>
-63:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">method</span>
-64:             <span class="ruby-identifier">@@method</span>
-65:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 71</span>
+71:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">method</span>
+72:             <span class="ruby-identifier">@@method</span>
+73:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -560,10 +575,10 @@ Assigns the current method of the request
 					<div class="method-source-code"
 						id="method--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 59</span>
-59:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">method=</span>(<span class="ruby-identifier">method</span>)
-60:             <span class="ruby-identifier">@@method</span> = <span class="ruby-identifier">method</span>
-61:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 67</span>
+67:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">method=</span>(<span class="ruby-identifier">method</span>)
+68:             <span class="ruby-identifier">@@method</span> = <span class="ruby-identifier">method</span>
+69:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -596,10 +611,10 @@ Initializes the request
 					<div class="method-source-code"
 						id="new-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 68</span>
-68:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">req</span>)
-69:             <span class="ruby-identifier">@@req</span> = <span class="ruby-identifier">req</span>
-70:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 76</span>
+76:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">initialize</span>(<span class="ruby-identifier">req</span>)
+77:             <span class="ruby-identifier">@@req</span> = <span class="ruby-identifier">req</span>
+78:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -633,60 +648,60 @@ parameters Uses the routes config file for translation
 					<div class="method-source-code"
 						id="process-uri-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/classes/router.rb, line 146</span>
-146:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">process_uri</span>(<span class="ruby-identifier">path</span>)
-147: 
-148:             <span class="ruby-comment cmt"># Load routes</span>
-149:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">find_file</span>(<span class="ruby-value str">'config'</span>, <span class="ruby-value str">'routes'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
-150:                 <span class="ruby-identifier">require</span> <span class="ruby-identifier">file</span>
-151:             <span class="ruby-keyword kw">end</span>
-152: 
-153:             <span class="ruby-identifier">router_parts</span> = <span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'/'</span> <span class="ruby-operator">?</span> (<span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">@@routes</span>[<span class="ruby-value str">'_default'</span>][<span class="ruby-value">:val</span>]).<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>)
-154:             <span class="ruby-identifier">@@current_uri</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'?'</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>)
-155:             <span class="ruby-identifier">@@current_uri</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>)
-156:             <span class="ruby-identifier">@@segments</span> = <span class="ruby-identifier">@@current_uri</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>)[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
-157:             <span class="ruby-identifier">@@rsegments</span> = <span class="ruby-identifier">router_parts</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
-158:             <span class="ruby-identifier">routed_uri</span> = <span class="ruby-identifier">@@current_uri</span>
-159: 
-160:             <span class="ruby-comment cmt"># Try and find a direct match</span>
-161:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">@@routes</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">@@current_uri</span>)
-162:                 <span class="ruby-identifier">routed_uri</span> = <span class="ruby-identifier">@@routes</span>[<span class="ruby-identifier">@@current_uri</span>][<span class="ruby-value">:val</span>]
-163:                 <span class="ruby-identifier">@@rsegments</span> = <span class="ruby-identifier">routed_uri</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>)
-164:             <span class="ruby-keyword kw">else</span>
-165:                 <span class="ruby-identifier">@@routes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">route</span>, <span class="ruby-identifier">destination</span><span class="ruby-operator">|</span>
-166:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">destination</span>[<span class="ruby-value">:val</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Proc</span>)
-167:                         <span class="ruby-identifier">route</span> = <span class="ruby-identifier">destination</span>[<span class="ruby-value">:val</span>].<span class="ruby-identifier">call</span>(<span class="ruby-identifier">@@current_uri</span>)
-168:                         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">route</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">route</span>.<span class="ruby-identifier">nil?</span>
-169:                     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">route</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Regexp</span>)
-170:                         <span class="ruby-identifier">match</span> = <span class="ruby-identifier">route</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">@@current_uri</span>)
-171:                         <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
-172:                             <span class="ruby-identifier">routed_uri</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-identifier">route</span>, <span class="ruby-identifier">destination</span>[<span class="ruby-value">:val</span>])
-173:                             <span class="ruby-identifier">@@rsegments</span> = <span class="ruby-identifier">routed_uri</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>)
-174:                         <span class="ruby-keyword kw">end</span>
-175:                     <span class="ruby-keyword kw">end</span>
-176:                 <span class="ruby-keyword kw">end</span>
-177:             <span class="ruby-keyword kw">end</span>
-178: 
-179:             <span class="ruby-identifier">params</span> = <span class="ruby-identifier">@@rsegments</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">2</span>, <span class="ruby-identifier">router_parts</span>.<span class="ruby-identifier">length</span>)
-180: 
-181:             <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">nil?</span>
-182:                 <span class="ruby-identifier">params</span>.<span class="ruby-identifier">collect!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">param</span><span class="ruby-operator">|</span>
-183:                     <span class="ruby-identifier">param</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'?'</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>)
+     <span class="ruby-comment cmt"># File lib/classes/router.rb, line 154</span>
+154:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">process_uri</span>(<span class="ruby-identifier">path</span>)
+155: 
+156:             <span class="ruby-comment cmt"># Load routes</span>
+157:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">find_file</span>(<span class="ruby-value str">'config'</span>, <span class="ruby-value str">'routes'</span>).<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">file</span><span class="ruby-operator">|</span>
+158:                 <span class="ruby-identifier">require</span> <span class="ruby-identifier">file</span>
+159:             <span class="ruby-keyword kw">end</span>
+160: 
+161:             <span class="ruby-identifier">router_parts</span> = <span class="ruby-identifier">path</span> <span class="ruby-operator">==</span> <span class="ruby-value str">'/'</span> <span class="ruby-operator">?</span> (<span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">@@routes</span>[<span class="ruby-value str">'_default'</span>][<span class="ruby-value">:val</span>]).<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>) <span class="ruby-operator">:</span> <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>)
+162:             <span class="ruby-identifier">@@current_uri</span> = <span class="ruby-identifier">path</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'?'</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>)
+163:             <span class="ruby-identifier">@@current_uri</span>.<span class="ruby-identifier">slice!</span>(<span class="ruby-value">0</span>)
+164:             <span class="ruby-identifier">@@segments</span> = <span class="ruby-identifier">@@current_uri</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>)[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
+165:             <span class="ruby-identifier">@@rsegments</span> = <span class="ruby-identifier">router_parts</span>[<span class="ruby-value">1</span><span class="ruby-operator">..</span><span class="ruby-value">1</span>]
+166:             <span class="ruby-identifier">routed_uri</span> = <span class="ruby-identifier">@@current_uri</span>
+167: 
+168:             <span class="ruby-comment cmt"># Try and find a direct match</span>
+169:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">@@routes</span>.<span class="ruby-identifier">key?</span>(<span class="ruby-identifier">@@current_uri</span>)
+170:                 <span class="ruby-identifier">routed_uri</span> = <span class="ruby-identifier">@@routes</span>[<span class="ruby-identifier">@@current_uri</span>][<span class="ruby-value">:val</span>]
+171:                 <span class="ruby-identifier">@@rsegments</span> = <span class="ruby-identifier">routed_uri</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>)
+172:             <span class="ruby-keyword kw">else</span>
+173:                 <span class="ruby-identifier">@@routes</span>.<span class="ruby-identifier">each</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">route</span>, <span class="ruby-identifier">destination</span><span class="ruby-operator">|</span>
+174:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">destination</span>[<span class="ruby-value">:val</span>].<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Proc</span>)
+175:                         <span class="ruby-identifier">route</span> = <span class="ruby-identifier">destination</span>[<span class="ruby-value">:val</span>].<span class="ruby-identifier">call</span>(<span class="ruby-identifier">@@current_uri</span>)
+176:                         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">route</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">route</span>.<span class="ruby-identifier">nil?</span>
+177:                     <span class="ruby-keyword kw">elsif</span> <span class="ruby-identifier">route</span>.<span class="ruby-identifier">is_a?</span>(<span class="ruby-constant">Regexp</span>)
+178:                         <span class="ruby-identifier">match</span> = <span class="ruby-identifier">route</span>.<span class="ruby-identifier">match</span>(<span class="ruby-identifier">@@current_uri</span>)
+179:                         <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">and</span> <span class="ruby-identifier">match</span>.<span class="ruby-identifier">length</span> <span class="ruby-operator">&gt;</span> <span class="ruby-value">1</span>
+180:                             <span class="ruby-identifier">routed_uri</span>.<span class="ruby-identifier">gsub!</span>(<span class="ruby-identifier">route</span>, <span class="ruby-identifier">destination</span>[<span class="ruby-value">:val</span>])
+181:                             <span class="ruby-identifier">@@rsegments</span> = <span class="ruby-identifier">routed_uri</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>)
+182:                         <span class="ruby-keyword kw">end</span>
+183:                     <span class="ruby-keyword kw">end</span>
 184:                 <span class="ruby-keyword kw">end</span>
-185:             <span class="ruby-keyword kw">else</span>
-186:                 <span class="ruby-identifier">params</span> = []
-187:             <span class="ruby-keyword kw">end</span>
+185:             <span class="ruby-keyword kw">end</span>
+186: 
+187:             <span class="ruby-identifier">params</span> = <span class="ruby-identifier">@@rsegments</span>.<span class="ruby-identifier">slice</span>(<span class="ruby-value">2</span>, <span class="ruby-identifier">router_parts</span>.<span class="ruby-identifier">length</span>)
 188: 
-189:             <span class="ruby-comment cmt"># Use the default route if nothing has been found</span>
-190:             <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span>
-191:                 <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">1</span>] = <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">'?'</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>)
-192:             <span class="ruby-keyword kw">else</span>
-193:                 <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">1</span>] = (<span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">@@routes</span>[<span class="ruby-value str">'_default'</span>][<span class="ruby-value">:val</span>]).<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>)
-194:             <span class="ruby-keyword kw">end</span>
-195: 
-196:             <span class="ruby-comment cmt"># make sure to remove the GET from any of the parameters</span>
-197:             {<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">'?'</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">'.'</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">downcase</span>, <span class="ruby-value">:method</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">1</span>], <span class="ruby-value">:params</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>}
-198:         <span class="ruby-keyword kw">end</span></pre>
+189:             <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">params</span>.<span class="ruby-identifier">nil?</span>
+190:                 <span class="ruby-identifier">params</span>.<span class="ruby-identifier">collect!</span> <span class="ruby-keyword kw">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">param</span><span class="ruby-operator">|</span>
+191:                     <span class="ruby-identifier">param</span>.<span class="ruby-identifier">split</span>(<span class="ruby-value str">'?'</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>)
+192:                 <span class="ruby-keyword kw">end</span>
+193:             <span class="ruby-keyword kw">else</span>
+194:                 <span class="ruby-identifier">params</span> = []
+195:             <span class="ruby-keyword kw">end</span>
+196: 
+197:             <span class="ruby-comment cmt"># Use the default route if nothing has been found</span>
+198:             <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">nil?</span>
+199:                 <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">1</span>] = <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">1</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">'?'</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>)
+200:             <span class="ruby-keyword kw">else</span>
+201:                 <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">1</span>] = (<span class="ruby-value str">'/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">@@routes</span>[<span class="ruby-value str">'_default'</span>][<span class="ruby-value">:val</span>]).<span class="ruby-identifier">split</span>(<span class="ruby-value str">'/'</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">2</span>)
+202:             <span class="ruby-keyword kw">end</span>
+203: 
+204:             <span class="ruby-comment cmt"># make sure to remove the GET from any of the parameters</span>
+205:             {<span class="ruby-value">:controller</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">0</span>].<span class="ruby-identifier">split</span>(<span class="ruby-value str">'?'</span>).<span class="ruby-identifier">at</span>(<span class="ruby-value">0</span>).<span class="ruby-identifier">gsub</span>(<span class="ruby-value str">'.'</span>, <span class="ruby-value str">''</span>).<span class="ruby-identifier">downcase</span>, <span class="ruby-value">:method</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">@@rsegments</span>[<span class="ruby-value">1</span>], <span class="ruby-value">:params</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-identifier">params</span>}
+206:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -719,10 +734,10 @@ Assigns the current rsegments of the request
 					<div class="method-source-code"
 						id="rsegments--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 47</span>
-47:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">rsegments=</span>(<span class="ruby-identifier">rsegments</span>)
-48:             <span class="ruby-identifier">@@rsegments</span> = <span class="ruby-identifier">rsegments</span>
-49:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 55</span>
+55:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">rsegments=</span>(<span class="ruby-identifier">rsegments</span>)
+56:             <span class="ruby-identifier">@@rsegments</span> = <span class="ruby-identifier">rsegments</span>
+57:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -755,10 +770,10 @@ Reads the current segments of the request
 					<div class="method-source-code"
 						id="segments-source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 43</span>
-43:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">segments</span>
-44:             <span class="ruby-identifier">@@segments</span>
-45:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 51</span>
+51:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">segments</span>
+52:             <span class="ruby-identifier">@@segments</span>
+53:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -791,10 +806,10 @@ Assigns the current segments of the request
 					<div class="method-source-code"
 						id="segments--source">
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 39</span>
-39:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">segments=</span>(<span class="ruby-identifier">segments</span>)
-40:             <span class="ruby-identifier">@@segments</span> = <span class="ruby-identifier">segments</span>
-41:         <span class="ruby-keyword kw">end</span></pre>
+    <span class="ruby-comment cmt"># File lib/classes/router.rb, line 47</span>
+47:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">segments=</span>(<span class="ruby-identifier">segments</span>)
+48:             <span class="ruby-identifier">@@segments</span> = <span class="ruby-identifier">segments</span>
+49:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
@@ -833,55 +848,55 @@ Processes the URI
 					<div class="method-source-code"
 						id="process-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/classes/router.rb, line 73</span>
- 73:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process</span>()
- 74:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'setup'</span>)
- 75: 
- 76:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.pre_router'</span>)
- 77:             <span class="ruby-comment cmt"># Find the controller and method</span>
- 78:             <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">path</span>
- 79:             <span class="ruby-identifier">uri</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Router</span>.<span class="ruby-identifier">process_uri</span>(<span class="ruby-identifier">uri</span>)
- 80: 
- 81:             <span class="ruby-comment cmt"># Let events have the ability to modify the uri array</span>
- 82:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.post_router'</span>, <span class="ruby-identifier">uri</span>)
- 83:             <span class="ruby-identifier">@@controller</span> = <span class="ruby-value str">'Picombo::Controllers::'</span><span class="ruby-operator">+</span><span class="ruby-identifier">uri</span>[<span class="ruby-value">:controller</span>]
- 84:             <span class="ruby-identifier">@@method</span> = <span class="ruby-identifier">uri</span>[<span class="ruby-value">:method</span>]
- 85: 
- 86:             <span class="ruby-comment cmt"># Try and load the controller class</span>
- 87:             <span class="ruby-keyword kw">begin</span>
- 88:                 <span class="ruby-identifier">controller</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Controllers</span><span class="ruby-operator">::</span><span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">uri</span>[<span class="ruby-value">:controller</span>].<span class="ruby-identifier">capitalize!</span>).<span class="ruby-identifier">new</span>
- 89:             <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>, <span class="ruby-constant">NameError</span>
- 90:                 <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Controllers</span><span class="ruby-operator">::</span><span class="ruby-constant">Error_404</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">run_error</span>(<span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">path</span>)
- 91:             <span class="ruby-keyword kw">end</span>
- 92: 
- 93:             <span class="ruby-identifier">controller_methods</span> = <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">methods</span>
- 94: 
- 95:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">stop</span>(<span class="ruby-value str">'setup'</span>)
- 96: 
- 97:             <span class="ruby-comment cmt"># Execute the controller method</span>
- 98:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'controller_execution'</span>)
- 99: 
-100:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.pre_controller'</span>)
-101:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">controller_methods</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">uri</span>[<span class="ruby-value">:method</span>])
-102:                 <span class="ruby-keyword kw">begin</span>
-103:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">uri</span>[<span class="ruby-value">:params</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">uri</span>[<span class="ruby-value">:params</span>].<span class="ruby-identifier">empty?</span>
-104:                         <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">uri</span>[<span class="ruby-value">:method</span>])
-105:                     <span class="ruby-keyword kw">else</span>
-106:                         <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">uri</span>[<span class="ruby-value">:method</span>], *<span class="ruby-identifier">uri</span>[<span class="ruby-value">:params</span>])
-107:                     <span class="ruby-keyword kw">end</span>
-108:                 <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">E404</span>
-109:                     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Controllers</span><span class="ruby-operator">::</span><span class="ruby-constant">Error_404</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">run_error</span>(<span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">path</span>)
-110:                 <span class="ruby-keyword kw">end</span>
-111:             <span class="ruby-keyword kw">else</span>
-112:                 <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Controllers</span><span class="ruby-operator">::</span><span class="ruby-constant">Error_404</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">run_error</span>(<span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">path</span>)
-113:             <span class="ruby-keyword kw">end</span>
-114:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.post_controller'</span>)
-115: 
-116:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">stop</span>(<span class="ruby-value str">'controller_execution'</span>)
-117:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">stop</span>(<span class="ruby-value str">'application'</span>)
-118: 
-119:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">render</span>
-120:         <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/classes/router.rb, line 81</span>
+ 81:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">process</span>()
+ 82:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'setup'</span>)
+ 83: 
+ 84:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.pre_router'</span>)
+ 85:             <span class="ruby-comment cmt"># Find the controller and method</span>
+ 86:             <span class="ruby-identifier">uri</span> = <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">path</span>
+ 87:             <span class="ruby-identifier">uri</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Router</span>.<span class="ruby-identifier">process_uri</span>(<span class="ruby-identifier">uri</span>)
+ 88: 
+ 89:             <span class="ruby-comment cmt"># Let events have the ability to modify the uri array</span>
+ 90:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.post_router'</span>, <span class="ruby-identifier">uri</span>)
+ 91:             <span class="ruby-identifier">@@controller</span> = <span class="ruby-value str">'Picombo::Controllers::'</span><span class="ruby-operator">+</span><span class="ruby-identifier">uri</span>[<span class="ruby-value">:controller</span>]
+ 92:             <span class="ruby-identifier">@@method</span> = <span class="ruby-identifier">uri</span>[<span class="ruby-value">:method</span>]
+ 93: 
+ 94:             <span class="ruby-comment cmt"># Try and load the controller class</span>
+ 95:             <span class="ruby-keyword kw">begin</span>
+ 96:                 <span class="ruby-identifier">controller</span> = <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Controllers</span><span class="ruby-operator">::</span><span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">uri</span>[<span class="ruby-value">:controller</span>].<span class="ruby-identifier">capitalize!</span>).<span class="ruby-identifier">new</span>
+ 97:             <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">LoadError</span>, <span class="ruby-constant">NameError</span>
+ 98:                 <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Controllers</span><span class="ruby-operator">::</span><span class="ruby-constant">Error_404</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">run_error</span>(<span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">path</span>)
+ 99:             <span class="ruby-keyword kw">end</span>
+100: 
+101:             <span class="ruby-identifier">controller_methods</span> = <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">methods</span>
+102: 
+103:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">stop</span>(<span class="ruby-value str">'setup'</span>)
+104: 
+105:             <span class="ruby-comment cmt"># Execute the controller method</span>
+106:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">start</span>(<span class="ruby-value str">'controller_execution'</span>)
+107: 
+108:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.pre_controller'</span>)
+109:             <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">controller_methods</span>.<span class="ruby-identifier">include?</span>(<span class="ruby-identifier">uri</span>[<span class="ruby-value">:method</span>])
+110:                 <span class="ruby-keyword kw">begin</span>
+111:                     <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">uri</span>[<span class="ruby-value">:params</span>].<span class="ruby-identifier">nil?</span> <span class="ruby-keyword kw">or</span> <span class="ruby-identifier">uri</span>[<span class="ruby-value">:params</span>].<span class="ruby-identifier">empty?</span>
+112:                         <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">uri</span>[<span class="ruby-value">:method</span>])
+113:                     <span class="ruby-keyword kw">else</span>
+114:                         <span class="ruby-identifier">controller</span>.<span class="ruby-identifier">send</span>(<span class="ruby-identifier">uri</span>[<span class="ruby-value">:method</span>], *<span class="ruby-identifier">uri</span>[<span class="ruby-value">:params</span>])
+115:                     <span class="ruby-keyword kw">end</span>
+116:                 <span class="ruby-keyword kw">rescue</span> <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">E404</span>
+117:                     <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Controllers</span><span class="ruby-operator">::</span><span class="ruby-constant">Error_404</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">run_error</span>(<span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">path</span>)
+118:                 <span class="ruby-keyword kw">end</span>
+119:             <span class="ruby-keyword kw">else</span>
+120:                 <span class="ruby-keyword kw">return</span> <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Controllers</span><span class="ruby-operator">::</span><span class="ruby-constant">Error_404</span>.<span class="ruby-identifier">new</span>.<span class="ruby-identifier">run_error</span>(<span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">path</span>)
+121:             <span class="ruby-keyword kw">end</span>
+122:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Event</span>.<span class="ruby-identifier">run</span>(<span class="ruby-value str">'system.post_controller'</span>)
+123: 
+124:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">stop</span>(<span class="ruby-value str">'controller_execution'</span>)
+125:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Bench</span>.<span class="ruby-identifier">instance</span>.<span class="ruby-identifier">stop</span>(<span class="ruby-value str">'application'</span>)
+126: 
+127:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">render</span>
+128:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

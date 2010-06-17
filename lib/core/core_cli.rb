@@ -1,9 +1,6 @@
 require 'core/core'
 
 module Picombo
-	# == Core
-	#
-	# The core class for Picombo. Handles system initialization and other core functionality.
 	class Core
 
 		# Standard call function that gets invoked by Rack

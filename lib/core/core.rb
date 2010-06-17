@@ -7,6 +7,65 @@
 # Picombo is a Rack-based Ruby MVC web framework with design principles taken from the Kohana PHP Framework.
 #
 # It's designed to be fast, lightweight and easy to use.
+# 
+# == Filesystem Structure
+# 
+# Picombo supports automatic class autoloading. This depends on the directory structure of Picombo. It has a few standard structures:
+# 
+# 	classes/
+# 	config/
+# 	controllers/
+# 	hooks/
+# 	models/
+# 	views/
+# 
+# === Classes
+# This is the location that general classes go in the filesystem.
+# 
+# These class names must be in the Picombo module to be properly autoloaded.
+# 
+# === Config
+# This is where config items go. All config files except the Route file should be YAML to be read properly.
+# 
+# === Controllers
+# This is where controllers go (See the controllers doc for more information).
+# 
+# These class names should be in the Picombo::Controllers module to be properly autoloaded.
+# 
+# === Hooks
+# Hooks go here. You can use hooks to extend/replace/expand system functionality. Hooks run before anything else in the system setup process.
+# 
+# === Models
+# This is where your models go (See the models doc for more information).
+# 
+# These class names should be in the Picombo::Models module to be properly autoloaded.
+# 
+# === Views
+# This is where views go (See the mustache docs for specific usage).
+# 
+# If you write a Picombo extension, it's important to know that all extensions should follow this same directory layout. In Picombo, all standard filesystem locations are searched from application first, through the extension list, and finally down to the core system folder. This lets you easily extend and replace functionality with extensions.
+# 
+# == Autoloading
+# As long as your files/classes are setup as above, autoloading will "just work". There's one special case, however: underscores in class names. When you have an underscore in your class name, it will be translated to a directory seperator.
+# 
+# 	class Picombo::Controllers::Foo_Bar
+# 
+# lives in:
+# 	controllers/foo/bar.rb
+# 
+# and
+# 	class Picombo::Cache_Memcache
+# 
+# lives in:
+# 	classes/cache/memcache.rb
+# 
+# == Typical Request Flow
+# In a typical Picombo request here's how a request get's processed:
+# 
+# 1. URI comes in from the browser to the server, and is passes to the Router
+# 2. The router processes the URI using the routes.rb config file to do any special routing
+# 3. The routed URI is the then processed by the appropriate controller
+# 4. The controller processes any input, works with Views and Models to generate the request output
 
 module Picombo
 	# == Core

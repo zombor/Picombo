@@ -74,6 +74,9 @@
 						<li><a href="./lib/classes/session_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/classes/session.rb">lib/classes/session.rb</a></li>
 					
+						<li><a href="./lib/classes/stache_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/classes/stache.rb">lib/classes/stache.rb</a></li>
+					
 						<li><a href="./lib/classes/url_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/classes/url.rb">lib/classes/url.rb</a></li>
 					
@@ -91,9 +94,6 @@
 					
 						<li><a href="./lib/core/core_cli_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/core/core_cli.rb">lib/core/core_cli.rb</a></li>
-					
-						<li><a href="./lib/hooks/mustache_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/hooks/mustache.rb">lib/hooks/mustache.rb</a></li>
 					
 						<li><a href="./lib/views/bench/footer_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/views/bench/footer.rb">lib/views/bench/footer.rb</a></li>
@@ -280,6 +280,123 @@ with design principles taken from the Kohana PHP Framework.
 <p>
 It&#8217;s designed to be fast, lightweight and easy to use.
 </p>
+<h2>Filesystem Structure</h2>
+<p>
+<a href="Picombo.html">Picombo</a> supports automatic class autoloading.
+This depends on the directory structure of <a
+href="Picombo.html">Picombo</a>. It has a few standard structures:
+</p>
+<pre>
+  classes/
+  config/
+  controllers/
+  hooks/
+  models/
+  views/
+</pre>
+<h3>Classes</h3>
+<p>
+This is the location that general classes go in the filesystem.
+</p>
+<p>
+These class names must be in the <a href="Picombo.html">Picombo</a> module
+to be properly autoloaded.
+</p>
+<h3><a href="Picombo/Config.html">Config</a></h3>
+<p>
+This is where config items go. All config files except the Route file
+should be YAML to be read properly.
+</p>
+<h3><a href="Picombo/Controllers.html">Controllers</a></h3>
+<p>
+This is where controllers go (See the controllers doc for more
+information).
+</p>
+<p>
+These class names should be in the <a
+href="Picombo/Controllers.html">Picombo::Controllers</a> module to be
+properly autoloaded.
+</p>
+<h3>Hooks</h3>
+<p>
+Hooks go here. You can use hooks to extend/replace/expand system
+functionality. Hooks run before anything else in the system setup process.
+</p>
+<h3><a href="Picombo/Models.html">Models</a></h3>
+<p>
+This is where your models go (See the models doc for more information).
+</p>
+<p>
+These class names should be in the <a
+href="Picombo/Models.html">Picombo::Models</a> module to be properly
+autoloaded.
+</p>
+<h3>Views</h3>
+<p>
+This is where views go (See the mustache docs for specific usage).
+</p>
+<p>
+If you write a <a href="Picombo.html">Picombo</a> extension, it&#8217;s
+important to know that all extensions should follow this same directory
+layout. In <a href="Picombo.html">Picombo</a>, all standard filesystem
+locations are searched from application first, through the extension list,
+and finally down to the core system folder. This lets you easily extend and
+replace functionality with extensions.
+</p>
+<h2>Autoloading</h2>
+<p>
+As long as your files/classes are setup as above, autoloading will
+&#8220;just work&#8221;. There&#8217;s one special case, however:
+underscores in class names. When you have an underscore in your class name,
+it will be translated to a directory seperator.
+</p>
+<pre>
+  class Picombo::Controllers::Foo_Bar
+</pre>
+<p>
+lives in:
+</p>
+<pre>
+  controllers/foo/bar.rb
+</pre>
+<p>
+and
+</p>
+<pre>
+  class Picombo::Cache_Memcache
+</pre>
+<p>
+lives in:
+</p>
+<pre>
+  classes/cache/memcache.rb
+</pre>
+<h2>Typical Request Flow</h2>
+<p>
+In a typical <a href="Picombo.html">Picombo</a> request here&#8217;s how a
+request get&#8217;s processed:
+</p>
+<ol>
+<li><p>
+URI comes in from the browser to the server, and is passes to the <a
+href="Picombo/Router.html">Router</a>
+</p>
+</li>
+<li><p>
+The router processes the URI using the routes.rb config file to do any
+special routing
+</p>
+</li>
+<li><p>
+The routed URI is the then processed by the appropriate controller
+</p>
+</li>
+<li><p>
+The controller processes any input, works with Views and <a
+href="Picombo/Models.html">Models</a> to generate the request output
+</p>
+</li>
+</ol>
 
 		</div>
 
@@ -317,18 +434,18 @@ Autoloader for missing <a href="Picombo.html">Picombo</a> classes
 					<div class="method-source-code"
 						id="const-missing-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/core/core.rb, line 150</span>
-150:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Picombo</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
-151:         <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-152: 
-153:         <span class="ruby-identifier">require</span> <span class="ruby-value str">'classes/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'/'</span>)
-154: 
-155:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
-156: 
-157:         <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
-158:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
-159:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
-160:     <span class="ruby-keyword kw">end</span></pre>
+     <span class="ruby-comment cmt"># File lib/core/core.rb, line 209</span>
+209:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Picombo</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
+210:         <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
+211: 
+212:         <span class="ruby-identifier">require</span> <span class="ruby-value str">'classes/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'/'</span>)
+213: 
+214:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+215: 
+216:         <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
+217:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
+218:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
+219:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

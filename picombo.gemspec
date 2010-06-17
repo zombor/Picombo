@@ -22,6 +22,7 @@ Gem::Specification.new do |s|
 	'./lib/classes/log.rb',
 	'./lib/classes/router.rb',
 	'./lib/classes/session.rb',
+	'./lib/classes/stache.rb',
 	'./lib/classes/url.rb',
 	'./lib/config/cache.yaml',
 	'./lib/config/log.yaml',
