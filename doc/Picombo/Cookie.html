@@ -1,0 +1,404 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+
+	<title>Class: Picombo::Cookie</title>
+
+	<link rel="stylesheet" href="../rdoc.css" type="text/css" media="screen" />
+
+	<script src="../js/jquery.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/thickbox-compressed.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/quicksearch.js" type="text/javascript"
+		charset="utf-8"></script>
+	<script src="../js/darkfish.js" type="text/javascript"
+		charset="utf-8"></script>
+
+</head>
+<body class="class">
+
+	<div id="metadata">
+		<div id="home-metadata">
+			<div id="home-section" class="section">
+        <h3 class="section-header">
+          <a href="../index.html">Home</a>
+          <a href="../index.html#classes">Classes</a>
+          <a href="../index.html#methods">Methods</a>
+        </h3>
+			</div>
+		</div>
+
+		<div id="file-metadata">
+			<div id="file-list-section" class="section">
+				<h3 class="section-header">In Files</h3>
+				<div class="section-body">
+					<ul>
+					
+						<li><a href="../lib/classes/cookie_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/classes/cookie.rb">lib/classes/cookie.rb</a></li>
+					
+					</ul>
+				</div>
+			</div>
+
+			
+		</div>
+
+		<div id="class-metadata">
+
+			<!-- Parent Class -->
+			
+			<div id="parent-class-section" class="section">
+				<h3 class="section-header">Parent</h3>
+				
+				<p class="link"><a href="../Object.html">Object</a></p>
+				
+			</div>
+			
+
+			<!-- Namespace Contents -->
+			
+
+			<!-- Method Quickref -->
+			
+			<div id="method-list-section" class="section">
+				<h3 class="section-header">Methods</h3>
+				<ul class="link-list">
+					
+					<li><a href="#method-c-delete">::delete</a></li>
+					
+					<li><a href="#method-c-get">::get</a></li>
+					
+					<li><a href="#method-c-set">::set</a></li>
+					
+					<li><a href="#method-i-init">#init</a></li>
+					
+				</ul>
+			</div>
+			
+
+			<!-- Included Modules -->
+			
+			<div id="includes-section" class="section">
+				<h3 class="section-header">Included Modules</h3>
+				<ul class="link-list">
+				
+				
+					<li><span class="include">Singleton</span></li>
+				
+				
+				</ul>
+			</div>
+			
+		</div>
+
+		<div id="project-metadata">
+			
+			
+			<div id="fileindex-section" class="section project-section">
+				<h3 class="section-header">Files</h3>
+				<ul>
+				
+					<li class="file"><a href="../LICENSE.html">LICENSE</a></li>
+				
+					<li class="file"><a href="../README.html">README</a></li>
+				
+				</ul>
+			</div>
+			
+
+			<div id="classindex-section" class="section project-section">
+				<h3 class="section-header">Class Index
+					<span class="search-toggle"><img src="../images/find.png"
+						height="16" width="16" alt="[+]"
+						title="show/hide quicksearch" /></span></h3>
+				<form action="#" method="get" accept-charset="utf-8" class="initially-hidden">
+				<fieldset>
+					<legend>Quicksearch</legend>
+					<input type="text" name="quicksearch" value=""
+						class="quicksearch-field" />
+				</fieldset>
+				</form>
+
+				<ul class="link-list">
+				
+					<li><a href="../Picombo.html">Picombo</a></li>
+				
+					<li><a href="../Picombo/Bench.html">Picombo::Bench</a></li>
+				
+					<li><a href="../Picombo/CLI_Request.html">Picombo::CLI_Request</a></li>
+				
+					<li><a href="../Picombo/CLI_Response.html">Picombo::CLI_Response</a></li>
+				
+					<li><a href="../Picombo/Cache.html">Picombo::Cache</a></li>
+				
+					<li><a href="../Picombo/Cache_File.html">Picombo::Cache_File</a></li>
+				
+					<li><a href="../Picombo/Config.html">Picombo::Config</a></li>
+				
+					<li><a href="../Picombo/Controllers.html">Picombo::Controllers</a></li>
+				
+					<li><a href="../Picombo/Controllers/Error_404.html">Picombo::Controllers::Error_404</a></li>
+				
+					<li><a href="../Picombo/Controllers/Template.html">Picombo::Controllers::Template</a></li>
+				
+					<li><a href="../Picombo/Controllers/Unittest.html">Picombo::Controllers::Unittest</a></li>
+				
+					<li><a href="../Picombo/Cookie.html">Picombo::Cookie</a></li>
+				
+					<li><a href="../Picombo/Core.html">Picombo::Core</a></li>
+				
+					<li><a href="../Picombo/E404.html">Picombo::E404</a></li>
+				
+					<li><a href="../Picombo/Event.html">Picombo::Event</a></li>
+				
+					<li><a href="../Picombo/Html.html">Picombo::Html</a></li>
+				
+					<li><a href="../Picombo/Input.html">Picombo::Input</a></li>
+				
+					<li><a href="../Picombo/Log.html">Picombo::Log</a></li>
+				
+					<li><a href="../Picombo/Models.html">Picombo::Models</a></li>
+				
+					<li><a href="../Picombo/Router.html">Picombo::Router</a></li>
+				
+					<li><a href="../Picombo/Session.html">Picombo::Session</a></li>
+				
+					<li><a href="../Picombo/Stache.html">Picombo::Stache</a></li>
+				
+					<li><a href="../Picombo/Stache/Bench_Footer.html">Picombo::Stache::Bench_Footer</a></li>
+				
+					<li><a href="../Picombo/Stache/Error_404.html">Picombo::Stache::Error_404</a></li>
+				
+					<li><a href="../Picombo/Url.html">Picombo::Url</a></li>
+				
+					<li><a href="../Mustache.html">Mustache</a></li>
+				
+					<li><a href="../Object.html">Object</a></li>
+				
+				</ul>
+				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
+			</div>
+
+			
+		</div>
+	</div>
+
+	<div id="documentation">
+		<h1 class="class">Picombo::Cookie</h1>
+
+		<div id="description">
+			<h2><a href="Cookie.html">Cookie</a> handling class</h2>
+<p>
+In essense, a proxy to the rack cookie handling methods.
+</p>
+<h2>Example usage</h2>
+<p>
+Writing cookie values
+</p>
+<pre>
+ Picombo::Cookie.set(:sample, 'this is the content of the cookie')
+</pre>
+<p>
+Getting cookie values
+</p>
+<pre>
+ Picombo::Cookie.get(:sample)
+</pre>
+<p>
+Deleting a cookie
+</p>
+<pre>
+ Picombo::Cookie.delete(:sample)</pre>
+
+		</div>
+
+		<!-- Constants -->
+		
+
+		<!-- Attributes -->
+		
+
+		<!-- Methods -->
+		
+		<div id="public-class-method-details" class="method-section section">
+			<h3 class="section-header">Public Class Methods</h3>
+
+		
+			<div id="delete-method" class="method-detail ">
+				<a name="method-c-delete"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">delete</span><span
+						class="method-args">(key)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Deletes a cookie item defined by key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="delete-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 36</span>
+36:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">delete</span>(<span class="ruby-identifier">key</span>)
+37:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">raw_response</span>.<span class="ruby-identifier">delete_cookie</span>(<span class="ruby-identifier">key</span>)
+38:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="get-method" class="method-detail ">
+				<a name="method-c-get"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">get</span><span
+						class="method-args">(key, default = nil)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Retrieves a cookie item defined by key
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="get-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 24</span>
+24:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">get</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">default</span> = <span class="ruby-keyword kw">nil</span>)
+25:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">cookies</span>[<span class="ruby-identifier">key</span>] <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">@@req</span>.<span class="ruby-identifier">cookies</span>.<span class="ruby-identifier">has_key?</span>(<span class="ruby-identifier">key</span>)
+26: 
+27:             <span class="ruby-identifier">default</span>
+28:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+			<div id="set-method" class="method-detail ">
+				<a name="method-c-set"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">set</span><span
+						class="method-args">(key, val)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Sets a cookie item defined by key to val
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="set-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 31</span>
+31:         <span class="ruby-keyword kw">def</span> <span class="ruby-keyword kw">self</span>.<span class="ruby-identifier">set</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>)
+32:             <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">raw_response</span>.<span class="ruby-identifier">set_cookie</span>(<span class="ruby-identifier">key</span>, <span class="ruby-identifier">val</span>)
+33:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+		<div id="public-instance-method-details" class="method-section section">
+			<h3 class="section-header">Public Instance Methods</h3>
+
+		
+			<div id="init-method" class="method-detail ">
+				<a name="method-i-init"></a>
+
+				<div class="method-heading">
+				
+					<span class="method-name">init</span><span
+						class="method-args">(req)</span>
+					<span class="method-click-advice">click to toggle source</span>
+				
+				</div>
+
+				<div class="method-description">
+					
+					<p>
+Initializes the request for cookies
+</p>
+					
+
+					
+					<div class="method-source-code"
+						id="init-source">
+<pre>
+    <span class="ruby-comment cmt"># File lib/classes/cookie.rb, line 19</span>
+19:         <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">init</span>(<span class="ruby-identifier">req</span>)
+20:             <span class="ruby-identifier">@@req</span> = <span class="ruby-identifier">req</span>
+21:         <span class="ruby-keyword kw">end</span></pre>
+					</div>
+					
+				</div>
+
+				
+
+				
+			</div>
+
+		
+		</div>
+	
+
+	</div>
+
+
+	<div id="rdoc-debugging-section-dump" class="debugging-section">
+	
+		<p>Disabled; run with --debug to generate this.</p>
+	
+	</div>
+
+	<div id="validator-badges">
+		<p><small><a href="http://validator.w3.org/check/referer">[Validate]</a></small></p>
+		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
+			Rdoc Generator</a> 1.1.6</small>.</p>
+	</div>
+
+</body>
+</html>
+
