@@ -23,8 +23,8 @@ module Picombo
 			Picombo::Config.get('config.extensions').each do |extension|
 				require extension
 			end
-			$LOAD_PATH.delete(APPPATH)
-			$LOAD_PATH.unshift(APPPATH)
+			$LOAD_PATH.delete(::APPPATH)
+			$LOAD_PATH.unshift(::APPPATH)
 
 			# Load hooks
 			Picombo::Config.get('config.hooks').each do |hook|

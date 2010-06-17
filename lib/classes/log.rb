@@ -22,7 +22,7 @@ module Picombo
 
 			if types[type] <= Picombo::Config.get('log.log_threshold')
 				t = Time.now
-				f = File.new(APPPATH+Picombo::Config.get('log.directory')+t.year.to_s+'-'+t.month.to_s+'-'+t.day.to_s+'.log', 'a')
+				f = File.new(::APPPATH+Picombo::Config.get('log.directory')+t.year.to_s+'-'+t.month.to_s+'-'+t.day.to_s+'.log', 'a')
 				f.write(t.to_s+' --- '+type.to_s+': '+message.to_s+"\n");
 				f.close
 			end

@@ -12,7 +12,7 @@ class TestInput < Test::Unit::TestCase
 
 	def setup
 		$LOAD_PATH.unshift(SYSPATH)
-		$LOAD_PATH.unshift(APPPATH)
+		$LOAD_PATH.unshift(::APPPATH)
 	end
 
 	def app

@@ -10,17 +10,17 @@ module Picombo
 		# Constructor.
 		def initialize(config)
 			@@config = config
-			raise "Cache directory does not exist: "+APPPATH+'cache' unless File.directory?(APPPATH+'cache/')
-			raise "Cache directory not writable: "+APPPATH+'cache' unless File.writable?(APPPATH+'cache/')
+			raise "Cache directory does not exist: "+::APPPATH+'cache' unless File.directory?(::APPPATH+'cache/')
+			raise "Cache directory not writable: "+::APPPATH+'cache' unless File.writable?(::APPPATH+'cache/')
 		end
 
 		# Finds an array of files that exist for a specified key
 		def exists(keys)
-			return Dir.glob(APPPATH+'cache/*~*') if keys == true
+			return Dir.glob(::APPPATH+'cache/*~*') if keys == true
 
 			paths = []
 			[*keys].each do |key|
-				Dir.glob(APPPATH+'cache/'+key.to_s+'~*').each do |path|
+				Dir.glob(::APPPATH+'cache/'+key.to_s+'~*').each do |path|
 					paths.push(path)
 				end
 			end
@@ -37,7 +37,7 @@ module Picombo
 			items.each do |key, value|
 				delete(key)
 
-				File.open(APPPATH+'cache/'+key.to_s+'~'+lifetime.to_s, 'w') {|f| f.write(Marshal.dump(value)) }
+				File.open(::APPPATH+'cache/'+key.to_s+'~'+lifetime.to_s, 'w') {|f| f.write(Marshal.dump(value)) }
 			end
 
 			return true

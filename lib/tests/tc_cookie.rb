@@ -7,7 +7,7 @@ require 'singleton'
 require '../core/core'
 require 'dm-core'
 
-APPPATH = File.expand_path(Dir.getwd+'../../../application/')+'/'
+::APPPATH = File.expand_path(Dir.getwd+'../../../application/')+'/'
 SYSPATH = File.expand_path(Dir.getwd+'../../../system/')+'/'
 EXTPATH = File.expand_path(Dir.getwd+'../../../extensions/')+'/'
 
@@ -16,7 +16,7 @@ class TestCookie < Test::Unit::TestCase
 
 	def setup
 		$LOAD_PATH.unshift(SYSPATH)
-		$LOAD_PATH.unshift(APPPATH)
+		$LOAD_PATH.unshift(::APPPATH)
 		use Rack::Session::Cookie
 	end
 

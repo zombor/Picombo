@@ -1,9 +1,9 @@
 # Root path
 PICOMBO = File.expand_path(Dir.getwd) + '/'
 # Application Path
-APPPATH = PICOMBO + 'application/'
+::APPPATH = PICOMBO + 'application/'
 
-$LOAD_PATH.unshift(APPPATH)
+$LOAD_PATH.unshift(::APPPATH)
 
 # app better be defined in here!
 require 'rubygems'
