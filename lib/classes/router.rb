@@ -169,8 +169,8 @@ module Picombo
 					elsif route.is_a?(Regexp)
 						match = route.match(@@current_uri)
 						if ! match.nil? and match.length > 1
-							routed_uri.gsub!(Regexp.new(route), destination[:val])
-							@@rsegments = routed_uri.split('/')[1..-1]
+							routed_uri.gsub!(route, destination[:val])
+							@@rsegments = routed_uri.split('/')
 						end
 					end
 				end
