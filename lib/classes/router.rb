@@ -94,7 +94,8 @@ module Picombo
 			# Try and load the controller class
 			begin
 				controller = Picombo::Controllers::const_get(uri[:controller].capitalize!).new
-			rescue LoadError, NameError
+			rescue LoadError, NameError => e
+				puts 'LoadError or NameError: '+e.message
 				return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 			end
 
@@ -106,17 +107,19 @@ module Picombo
 			Picombo::Bench.instance.start('controller_execution')
 
 			Picombo::Event.run('system.pre_controller')
-			if controller_methods.include?(uri[:method])
+			if controller_methods.include?(uri[:method].to_sym)
 				begin
 					if uri[:params].nil? or uri[:params].empty?
 						controller.send(uri[:method])
 					else
 						controller.send(uri[:method], *uri[:params])
 					end
-				rescue Picombo::E404
+				rescue Picombo::E404 => e
+					puts '404 Error: '+e.message
 					return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 				end
 			else
+				puts uri[:controller]+' did not include '+uri[:method]+'!!'
 				return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 			end
 			Picombo::Event.run('system.post_controller')
@@ -164,7 +167,8 @@ module Picombo
 			@@segments = @@current_uri.split('/')[1..-1]
 			@@rsegments = router_parts[1..-1]
 			routed_uri = @@current_uri
-
+puts '@@current_uri: '+@@current_uri.inspect
+puts 'routed_uri: '+routed_uri
 			# Try and find a direct match
 			if @@routes.key?(@@current_uri)
 				routed_uri = @@routes[@@current_uri][:val]
@@ -183,7 +187,7 @@ module Picombo
 					end
 				end
 			end
-
+puts '@@rsegments: '+@@rsegments.inspect
 			params = @@rsegments.slice(2, router_parts.length)
 
 			if ! params.nil?

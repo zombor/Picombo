@@ -9,5 +9,6 @@ def run_system()
 	app = Rack::Builder.new do
 		use Rack::Session::Cookie
 		run Picombo::Core.new
+		puts '-- Starting Picombo Version '+Picombo::Core::VERSION
 	end
 end

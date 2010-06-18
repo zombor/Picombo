@@ -41,7 +41,7 @@
 # These class names should be in the Picombo::Models module to be properly autoloaded.
 # 
 # === Views
-# This is where views go (See the mustache docs for specific usage).
+# This is where views go (See the Stache docs for specific usage).
 # 
 # If you write a Picombo extension, it's important to know that all extensions should follow this same directory layout. In Picombo, all standard filesystem locations are searched from application first, through the extension list, and finally down to the core system folder. This lets you easily extend and replace functionality with extensions.
 # 
@@ -73,6 +73,8 @@ module Picombo
 	# The core class for Picombo. Handles system initialization and other core functionality.
 	class Core
 		@@cli = false
+
+		VERSION = '0.4.0'
 
 		# Determines if the request was made on the CLI or not
 		def self.cli
