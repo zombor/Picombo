@@ -117,7 +117,7 @@ module Picombo
 				puts '404 Error: '+e.message
 				return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 			rescue NoMethodError => e
-				puts 'Controller '+uri[:controller]+' did not include method '+uri[:method]+'!!'
+				puts 'NoMethodError Error: '+e.message
 				return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 			end
 			Picombo::Event.run('system.post_controller')

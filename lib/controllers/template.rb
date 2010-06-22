@@ -23,16 +23,14 @@ module Picombo
 
 				@template = Picombo::Stache::const_get(@template.capitalize).new if @template.is_a?(String)
 
-				Picombo::Event.add('system.post_controller', [self, 'render']) if @auto_render
-			end
+				Picombo::Event.add('system.display') do |data|
+					if @auto_render
+						if Picombo::Core.cli
+							return @template.render
+						end
 
-			def render
-				if @auto_render
-					if Picombo::Core.cli
-						return @template.render
+						@template.output
 					end
-
-					@template.output
 				end
 			end
 		end
