@@ -8,7 +8,10 @@ module Picombo
 	# The event class is a powerful system where you can add, modify or remove Picombo functionality, and you can also create your own events to leverage easy plugablity features in your applicetion.
 	#
 	# === Examples
-	# It's very easy to use events to alter system behavior. This event addition will merge some parameters to every controller call:
+	# It's very easy to use events to alter system behavior.
+	# 
+	# ==== Using Procs
+	# You can add one-off proc objects to the event queue:
 	# 	Picombo::Event.add('system.post_router') do |data|
 	# 		data.merge!({:params => ['test', 'test', 'test']})
 	# 	end
@@ -16,9 +19,20 @@ module Picombo
 	#
 	# Because the system.post_router is called as Picombo::Event.run('system.post_router', uri) it passes the routed uri variable as data in the method above.
 	#
+	# ==== Using Strings
 	# You can also add class methods to events:
 	# 	Picombo::Event.add('system.shutdown', 'Picombo::Foobar.new.write_access_log')
 	# This might process some data and then write it to an event log on the system.shutdown event right before the output is sent to the browser
+	# 
+	# String event additions use eval(), so be careful!
+	# 
+	# ==== Using Arrays
+	# 
+	# You can also use arrays to pass things to the event queue:
+	# 
+	# 	Picombo::Event.add('system.display', [self, 'display'])
+	# 
+	# This will run the current class's "display" method on the system.display event
 
 	class Event
 		private
