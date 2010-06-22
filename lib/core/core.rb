@@ -74,7 +74,7 @@ module Picombo
 	class Core
 		@@cli = false
 
-		VERSION = '0.4.0'
+		VERSION = '0.4.1'
 
 		# Determines if the request was made on the CLI or not
 		def self.cli
