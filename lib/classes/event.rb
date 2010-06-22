@@ -104,19 +104,6 @@ module Picombo
 					end
 				elsif callback.is_a?(String)
 					eval(callback)
-					#callback = callback.split('.')
-
-					#if callback.length > 1
-					#	namespace = Object
-					#	callback[0].split("::").each do |const|
-					#		namespace = namespace.const_get(const)
-					#	end
-
-					#	Picombo::Log.write('info', 'trying to run '+namespace.inspect+'.'+callback[1])
-					#	namespace.send(callback[1])
-					#else
-					#	Kernel.send(callback[0])
-					#end
 				elsif callback.is_a?(Proc)
 					callback.call(data)
 				end
