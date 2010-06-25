@@ -108,6 +108,10 @@ module Picombo
 
 			Picombo::Event.run('system.pre_controller')
 			begin
+				if ! controller_methods.include?(uri[:method].to_sym) and ! controller_methods.include?(uri[:method].to_s)
+					raise Picombo::E404
+				end
+
 				if uri[:params].nil? or uri[:params].empty?
 					controller.send(uri[:method])
 				else
@@ -115,9 +119,6 @@ module Picombo
 				end
 			rescue Picombo::E404 => e
 				puts '404 Error: '+e.message
-				return Picombo::Controllers::Error_404.new.run_error(@@req.path)
-			rescue NoMethodError => e
-				puts 'NoMethodError Error: '+e.message
 				return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 			end
 			Picombo::Event.run('system.post_controller')
