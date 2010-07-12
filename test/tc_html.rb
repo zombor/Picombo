@@ -1,11 +1,6 @@
 require File.dirname(__FILE__) + '/test_helper'
 
 class TestHTML < Test::Unit::TestCase
-	def setup
-		$LOAD_PATH.unshift(File.expand_path(Dir.getwd+'../..')+'/')
-		$LOAD_PATH.unshift(File.expand_path(Dir.getwd+'../../../application')+'/')
-	end
-
 	def test_email
 		assert_equal('&#99&#111&#110&#116&#114&#97&#99&#116&#102&#114&#111&#109&#98&#101&#108&#111&#119&#64&#103&#109&#97&#105&#108&#46&#99&#111&#109', Picombo::Html.email('contractfrombelow@gmail.com'))
 	end
