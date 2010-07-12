@@ -1,5 +1,5 @@
-::APPPATH = File.expand_path(File.dirname(__FILE__) + '/../../application/')+'/'
-SYSPATH = File.expand_path(File.dirname(__FILE__) + '/../')+'/'
+::APPPATH = File.expand_path(File.dirname(__FILE__) + '/../application/')+'/'
+SYSPATH = File.expand_path(File.dirname(__FILE__) + '/../lib')+'/'
 
 $LOAD_PATH.unshift(SYSPATH)
 $LOAD_PATH.unshift(::APPPATH)
