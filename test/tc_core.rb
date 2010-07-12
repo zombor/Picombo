@@ -6,4 +6,14 @@ class TestCore < Test::Unit::TestCase
 
 		assert_equal(path, Picombo::Core.find_file('classes', 'router').shift);
 	end
+
+	def test_list_files
+		assert_equal(
+			[
+				'/Users/jeremybush/code/picombo.git/lib/views/error/404.mustache',
+				'/Users/jeremybush/code/picombo.git/lib/views/error/404.rb'
+			],
+			Picombo::Core.list_files('views/error')
+		)
+	end
 end
