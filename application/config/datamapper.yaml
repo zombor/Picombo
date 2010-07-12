@@ -1,6 +1,0 @@
-default:
- driver: mysql
- host: localhost
- database: jeremybush_picom
- username: jeremybush_picom
- password: picombo
