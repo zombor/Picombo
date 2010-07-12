@@ -10,8 +10,8 @@ class TestCore < Test::Unit::TestCase
 	def test_list_files
 		assert_equal(
 			[
-				'/Users/jeremybush/code/picombo.git/lib/views/error/404.mustache',
-				'/Users/jeremybush/code/picombo.git/lib/views/error/404.rb'
+				SYSPATH+'views/error/404.mustache',
+				SYSPATH+'views/error/404.rb'
 			],
 			Picombo::Core.list_files('views/error')
 		)

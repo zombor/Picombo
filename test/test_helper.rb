@@ -1,8 +1,7 @@
-::APPPATH = File.expand_path(File.dirname(__FILE__) + '/../application/')+'/'
+::APPPATH = File.expand_path(File.dirname(__FILE__) + '/../lib')+'/'
 SYSPATH = File.expand_path(File.dirname(__FILE__) + '/../lib')+'/'
 
 $LOAD_PATH.unshift(SYSPATH)
-$LOAD_PATH.unshift(::APPPATH)
 
 require 'rubygems'
 require 'test/unit'
