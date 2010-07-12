@@ -1,0 +1,6 @@
+site_domain: localhost:3000
+protocol: http
+extensions:
+  []
+hooks:
+  []
