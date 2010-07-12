@@ -35,5 +35,7 @@ Gem::Specification.new do |s|
 	'./lib/hooks/profiler.rb',
 	'./lib/picombo.rb',
 	'./lib/views/error/404.mustache',
-	'./lib/views/error/404.rb']
+	'./lib/views/error/404.rb',
+	'./lib/views/bench/footer.mustache',
+	'./lib/views/bench/footer.rb']
 end
