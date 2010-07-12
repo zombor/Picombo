@@ -5,10 +5,14 @@ require 'core/core'
 require 'classes/config'
 
 # This is where the magic happens!
-def run_system()
-	app = Rack::Builder.new do
-		use Rack::Session::Cookie
-		run Picombo::Core.new
-		puts '-- Starting Picombo Version '+Picombo::Core::VERSION
+module Picombo
+	module Loader
+		def self.run
+			return Rack::Builder.new do
+				use Rack::Session::Cookie
+				run Picombo::Core.new
+				puts '-- Starting Picombo Version '+Picombo::Core::VERSION
+			end
+		end
 	end
 end

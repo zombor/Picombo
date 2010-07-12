@@ -1,6 +1,6 @@
 Gem::Specification.new do |s|
   s.name = %q{picombo}
-  s.version = "0.4.1"
+  s.version = "0.4.2"
   s.date = %q{2010-06-22}
   s.authors = ["Jeremy Bush"]
   s.email = %q{contractfrombelow@gmail.com}
