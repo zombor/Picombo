@@ -1,13 +1,6 @@
-require 'test/unit'
-require 'yaml'
-require '../core/core'
+require File.dirname(__FILE__) + '/test_helper'
 
 class TestConfig < Test::Unit::TestCase
-	def setup
-		$LOAD_PATH.unshift(File.expand_path(Dir.getwd+'../..')+'/')
-		$LOAD_PATH.unshift(File.expand_path(Dir.getwd+'../../../application')+'/')
-	end
-
 	def test_key_string
 		hash = {'foo' => 'bar', 'baz' => {'foo' => 'bar'}}
 		assert_equal('bar', Picombo::Config.key_string(hash, 'foo'))

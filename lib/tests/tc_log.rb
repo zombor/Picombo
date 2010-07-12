@@ -1,18 +1,6 @@
-require 'test/unit'
-require 'yaml'
-require 'singleton'
-require '../core/core'
-
-::APPPATH = File.expand_path(Dir.getwd+'../../../application/')+'/'
-SYSPATH = File.expand_path(Dir.getwd+'../../../system/')+'/'
-EXTPATH = File.expand_path(Dir.getwd+'../../../extensions/')+'/'
+require File.dirname(__FILE__) + '/test_helper'
 
 class TestBench < Test::Unit::TestCase
-	def setup
-		$LOAD_PATH.unshift(File.expand_path(Dir.getwd+'../..')+'/')
-		$LOAD_PATH.unshift(File.expand_path(Dir.getwd+'../../../application')+'/')
-	end
-
 	def test_process
 		Picombo::Log.write(:info, 'This is a unit test')
 		t = Time.now

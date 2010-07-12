@@ -1,18 +1,10 @@
-require 'rubygems'
-require 'rack/test'
-require 'test/unit'
-require 'yaml'
-require 'erb'
-require 'singleton'
-require '../core/core'
-require 'dm-core'
+require File.dirname(__FILE__) + '/test_helper'
 
 class TestInput < Test::Unit::TestCase
 	include Rack::Test::Methods
 
 	def setup
-		$LOAD_PATH.unshift(SYSPATH)
-		$LOAD_PATH.unshift(::APPPATH)
+		require 'dm-core'
 	end
 
 	def app

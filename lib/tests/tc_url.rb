@@ -1,6 +1,4 @@
-require 'test/unit'
-require 'yaml'
-require '../core/core'
+require File.dirname(__FILE__) + '/test_helper'
 
 class TestURL < Test::Unit::TestCase
 	def setup

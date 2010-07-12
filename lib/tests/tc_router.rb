@@ -1,7 +1,4 @@
-require 'test/unit'
-require 'yaml'
-require 'singleton'
-require '../core/core'
+require File.dirname(__FILE__) + '/test_helper'
 
 class TestRouter < Test::Unit::TestCase
 	def setup
