@@ -1,15 +1,8 @@
 module Picombo
 	module Controllers
-		class Unittest < Picombo::Controllers::Template
+		class Unittest
 			def index()
-				Picombo::Session.instance.set(:test, 'val')
-				model = Picombo::Models::Test.new
-				template = Picombo::View::Core.new('template')
-				body = Picombo::View::Core.new('test')
-				body.set('whatever', 'testing a view variable')
-
-				template.set('body', body.render(true))
-				template.render
+				
 			end
 
 			def db_insert(value, test)
@@ -21,8 +14,6 @@ module Picombo
 			end
 
 			def test_redirect
-				
-
 				Picombo::Core.redirect('unittest/index')
 				Picombo::View.new('test').render
 			end

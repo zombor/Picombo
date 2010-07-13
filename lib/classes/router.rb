@@ -117,8 +117,13 @@ module Picombo
 				else
 					controller.send(uri[:method], *uri[:params])
 				end
+			rescue ArgumentError => e
+				puts 'ArgumentError 404: '+e.message
+				puts e.backtrace
+				return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 			rescue Picombo::E404 => e
 				puts '404 Error: '+e.message
+				puts e.backtrace
 				return Picombo::Controllers::Error_404.new.run_error(@@req.path)
 			end
 			Picombo::Event.run('system.post_controller')
