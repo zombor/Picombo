@@ -44,9 +44,6 @@
 						<li><a href="../lib/controllers/template_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/controllers/template.rb">lib/controllers/template.rb</a></li>
 					
-						<li><a href="../lib/controllers/unittest_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/controllers/unittest.rb">lib/controllers/unittest.rb</a></li>
-					
 						<li><a href="../lib/core/core_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/core/core.rb">lib/core/core.rb</a></li>
 					
@@ -71,8 +68,6 @@
 					<li><span class="type">CLASS</span> <a href="Controllers/Error_404.html">Picombo::Controllers::Error_404</a></li>
 					
 					<li><span class="type">CLASS</span> <a href="Controllers/Template.html">Picombo::Controllers::Template</a></li>
-					
-					<li><span class="type">CLASS</span> <a href="Controllers/Unittest.html">Picombo::Controllers::Unittest</a></li>
 					
 				</ul>
 			</div>
@@ -104,6 +99,8 @@
 					<li class="file"><a href="../LICENSE.html">LICENSE</a></li>
 				
 					<li class="file"><a href="../README.html">README</a></li>
+				
+					<li class="file"><a href="../Rakefile.html">Rakefile</a></li>
 				
 				</ul>
 			</div>
@@ -144,8 +141,6 @@
 				
 					<li><a href="../Picombo/Controllers/Template.html">Picombo::Controllers::Template</a></li>
 				
-					<li><a href="../Picombo/Controllers/Unittest.html">Picombo::Controllers::Unittest</a></li>
-				
 					<li><a href="../Picombo/Cookie.html">Picombo::Cookie</a></li>
 				
 					<li><a href="../Picombo/Core.html">Picombo::Core</a></li>
@@ -157,6 +152,8 @@
 					<li><a href="../Picombo/Html.html">Picombo::Html</a></li>
 				
 					<li><a href="../Picombo/Input.html">Picombo::Input</a></li>
+				
+					<li><a href="../Picombo/Loader.html">Picombo::Loader</a></li>
 				
 					<li><a href="../Picombo/Log.html">Picombo::Log</a></li>
 				
@@ -175,8 +172,6 @@
 					<li><a href="../Picombo/Url.html">Picombo::Url</a></li>
 				
 					<li><a href="../Mustache.html">Mustache</a></li>
-				
-					<li><a href="../Object.html">Object</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -309,18 +304,18 @@ Autoloader for missing controller names
 					<div class="method-source-code"
 						id="const-missing-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/core/core.rb, line 288</span>
-288:         <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Controllers</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
-289:             <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-290: 
-291:             <span class="ruby-identifier">require</span> <span class="ruby-value str">'controllers/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'/'</span>)
+     <span class="ruby-comment cmt"># File lib/core/core.rb, line 290</span>
+290:         <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Controllers</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
+291:             <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
 292: 
-293:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+293:             <span class="ruby-identifier">require</span> <span class="ruby-value str">'controllers/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'/'</span>)
 294: 
-295:             <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
-296:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
-297:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span>
-298:         <span class="ruby-keyword kw">end</span></pre>
+295:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+296: 
+297:             <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
+298:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
+299:             <span class="ruby-identifier">raise</span> <span class="ruby-constant">LoadError</span>
+300:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

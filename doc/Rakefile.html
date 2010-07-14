@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
 	"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
 	<meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
 
-	<title>Class: Mustache</title>
+	<title>File: Rakefile [RDoc Documentation]</title>
 
-	<link rel="stylesheet" href="./rdoc.css" type="text/css" media="screen" />
+	<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet" />
 
 	<script src="./js/jquery.js" type="text/javascript"
 		charset="utf-8"></script>
@@ -17,10 +18,9 @@
 		charset="utf-8"></script>
 	<script src="./js/darkfish.js" type="text/javascript"
 		charset="utf-8"></script>
-
 </head>
-<body class="class">
 
+<body class="file">
 	<div id="metadata">
 		<div id="home-metadata">
 			<div id="home-section" class="section">
@@ -30,53 +30,6 @@
           <a href="./index.html#methods">Methods</a>
         </h3>
 			</div>
-		</div>
-
-		<div id="file-metadata">
-			<div id="file-list-section" class="section">
-				<h3 class="section-header">In Files</h3>
-				<div class="section-body">
-					<ul>
-					
-						<li><a href="./lib/classes/stache_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/classes/stache.rb">lib/classes/stache.rb</a></li>
-					
-					</ul>
-				</div>
-			</div>
-
-			
-		</div>
-
-		<div id="class-metadata">
-
-			<!-- Parent Class -->
-			
-			<div id="parent-class-section" class="section">
-				<h3 class="section-header">Parent</h3>
-				
-				<p class="link">Object</p>
-				
-			</div>
-			
-
-			<!-- Namespace Contents -->
-			
-
-			<!-- Method Quickref -->
-			
-			<div id="method-list-section" class="section">
-				<h3 class="section-header">Methods</h3>
-				<ul class="link-list">
-					
-					<li><a href="#method-i-output">#output</a></li>
-					
-				</ul>
-			</div>
-			
-
-			<!-- Included Modules -->
-			
 		</div>
 
 		<div id="project-metadata">
@@ -172,68 +125,24 @@
 	</div>
 
 	<div id="documentation">
-		<h1 class="class">Mustache</h1>
-
-		<div id="description">
-			
-		</div>
-
-		<!-- Constants -->
-		
-
-		<!-- Attributes -->
-		
-
-		<!-- Methods -->
-		
-		<div id="public-instance-method-details" class="method-section section">
-			<h3 class="section-header">Public Instance Methods</h3>
-
-		
-			<div id="output-method" class="method-detail ">
-				<a name="method-i-output"></a>
-
-				<div class="method-heading">
-				
-					<span class="method-name">output</span><span
-						class="method-args">()</span>
-					<span class="method-click-advice">click to toggle source</span>
-				
-				</div>
-
-				<div class="method-description">
-					
-					
-					
-
-					
-					<div class="method-source-code"
-						id="output-source">
+		<p>
+# # Tests #
+</p>
+<p>
+task :default => :test
+</p>
+<p>
+desc &#8220;Run the test suite&#8221; task :test do
+</p>
 <pre>
-    <span class="ruby-comment cmt"># File lib/classes/stache.rb, line 41</span>
-41:     <span class="ruby-keyword kw">def</span> <span class="ruby-identifier">output</span>
-42:         <span class="ruby-constant">Picombo</span><span class="ruby-operator">::</span><span class="ruby-constant">Core</span>.<span class="ruby-identifier">response</span>(<span class="ruby-identifier">render</span>)
-43:     <span class="ruby-keyword kw">end</span></pre>
-					</div>
-					
-				</div>
+        Dir['test/ts_*.rb'].each do |f|
+                ruby(f)
+        end
+</pre>
+<p>
+end
+</p>
 
-				
-
-				
-			</div>
-
-		
-		</div>
-	
-
-	</div>
-
-
-	<div id="rdoc-debugging-section-dump" class="debugging-section">
-	
-		<p>Disabled; run with --debug to generate this.</p>
-	
 	</div>
 
 	<div id="validator-badges">
@@ -241,7 +150,6 @@
 		<p><small>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish
 			Rdoc Generator</a> 1.1.6</small>.</p>
 	</div>
-
 </body>
 </html>
 

@@ -83,6 +83,8 @@
 				
 					<li class="file"><a href="../README.html">README</a></li>
 				
+					<li class="file"><a href="../Rakefile.html">Rakefile</a></li>
+				
 				</ul>
 			</div>
 			
@@ -122,8 +124,6 @@
 				
 					<li><a href="../Picombo/Controllers/Template.html">Picombo::Controllers::Template</a></li>
 				
-					<li><a href="../Picombo/Controllers/Unittest.html">Picombo::Controllers::Unittest</a></li>
-				
 					<li><a href="../Picombo/Cookie.html">Picombo::Cookie</a></li>
 				
 					<li><a href="../Picombo/Core.html">Picombo::Core</a></li>
@@ -135,6 +135,8 @@
 					<li><a href="../Picombo/Html.html">Picombo::Html</a></li>
 				
 					<li><a href="../Picombo/Input.html">Picombo::Input</a></li>
+				
+					<li><a href="../Picombo/Loader.html">Picombo::Loader</a></li>
 				
 					<li><a href="../Picombo/Log.html">Picombo::Log</a></li>
 				
@@ -153,8 +155,6 @@
 					<li><a href="../Picombo/Url.html">Picombo::Url</a></li>
 				
 					<li><a href="../Mustache.html">Mustache</a></li>
-				
-					<li><a href="../Object.html">Object</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -240,18 +240,18 @@ Autoloader for missing models
 					<div class="method-source-code"
 						id="const-missing-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/core/core.rb, line 239</span>
-239:         <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Models</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
-240:             <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-241: 
-242:             <span class="ruby-identifier">require</span> <span class="ruby-value str">'models/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'/'</span>)
+     <span class="ruby-comment cmt"># File lib/core/core.rb, line 241</span>
+241:         <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Models</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
+242:             <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
 243: 
-244:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+244:             <span class="ruby-identifier">require</span> <span class="ruby-value str">'models/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'/'</span>)
 245: 
-246:             <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
-247:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
-248:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
-249:         <span class="ruby-keyword kw">end</span></pre>
+246:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+247: 
+248:             <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
+249:             <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
+250:             <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
+251:         <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>

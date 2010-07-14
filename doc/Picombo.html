@@ -86,14 +86,14 @@
 						<li><a href="./lib/controllers/template_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/controllers/template.rb">lib/controllers/template.rb</a></li>
 					
-						<li><a href="./lib/controllers/unittest_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
-							class="thickbox" title="lib/controllers/unittest.rb">lib/controllers/unittest.rb</a></li>
-					
 						<li><a href="./lib/core/core_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/core/core.rb">lib/core/core.rb</a></li>
 					
 						<li><a href="./lib/core/core_cli_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/core/core_cli.rb">lib/core/core_cli.rb</a></li>
+					
+						<li><a href="./lib/picombo_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
+							class="thickbox" title="lib/picombo.rb">lib/picombo.rb</a></li>
 					
 						<li><a href="./lib/views/bench/footer_rb.html?TB_iframe=true&amp;height=550&amp;width=785"
 							class="thickbox" title="lib/views/bench/footer.rb">lib/views/bench/footer.rb</a></li>
@@ -120,6 +120,8 @@
 				<ul class="link-list">
 					
 					<li><span class="type">MODULE</span> <a href="Picombo/Controllers.html">Picombo::Controllers</a></li>
+					
+					<li><span class="type">MODULE</span> <a href="Picombo/Loader.html">Picombo::Loader</a></li>
 					
 					<li><span class="type">MODULE</span> <a href="Picombo/Models.html">Picombo::Models</a></li>
 					
@@ -188,6 +190,8 @@
 				
 					<li class="file"><a href="./README.html">README</a></li>
 				
+					<li class="file"><a href="./Rakefile.html">Rakefile</a></li>
+				
 				</ul>
 			</div>
 			
@@ -227,8 +231,6 @@
 				
 					<li><a href="./Picombo/Controllers/Template.html">Picombo::Controllers::Template</a></li>
 				
-					<li><a href="./Picombo/Controllers/Unittest.html">Picombo::Controllers::Unittest</a></li>
-				
 					<li><a href="./Picombo/Cookie.html">Picombo::Cookie</a></li>
 				
 					<li><a href="./Picombo/Core.html">Picombo::Core</a></li>
@@ -240,6 +242,8 @@
 					<li><a href="./Picombo/Html.html">Picombo::Html</a></li>
 				
 					<li><a href="./Picombo/Input.html">Picombo::Input</a></li>
+				
+					<li><a href="./Picombo/Loader.html">Picombo::Loader</a></li>
 				
 					<li><a href="./Picombo/Log.html">Picombo::Log</a></li>
 				
@@ -258,8 +262,6 @@
 					<li><a href="./Picombo/Url.html">Picombo::Url</a></li>
 				
 					<li><a href="./Mustache.html">Mustache</a></li>
-				
-					<li><a href="./Object.html">Object</a></li>
 				
 				</ul>
 				<div id="no-class-search-results" style="display: none;">No matching classes.</div>
@@ -398,6 +400,9 @@ href="Picombo/Models.html">Models</a> to generate the request output
 </p>
 </li>
 </ol>
+<hr style="height: 1px"></hr><p>
+This is where the magic happens!
+</p>
 
 		</div>
 
@@ -435,18 +440,18 @@ Autoloader for missing <a href="Picombo.html">Picombo</a> classes
 					<div class="method-source-code"
 						id="const-missing-source">
 <pre>
-     <span class="ruby-comment cmt"># File lib/core/core.rb, line 209</span>
-209:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Picombo</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
-210:         <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
-211: 
-212:         <span class="ruby-identifier">require</span> <span class="ruby-value str">'classes/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'/'</span>)
+     <span class="ruby-comment cmt"># File lib/core/core.rb, line 211</span>
+211:     <span class="ruby-keyword kw">def</span> <span class="ruby-constant">Picombo</span>.<span class="ruby-identifier">const_missing</span>(<span class="ruby-identifier">name</span>)
+212:         <span class="ruby-identifier">filename</span> = <span class="ruby-identifier">name</span>.<span class="ruby-identifier">to_s</span>
 213: 
-214:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+214:         <span class="ruby-identifier">require</span> <span class="ruby-value str">'classes/'</span><span class="ruby-operator">+</span><span class="ruby-identifier">filename</span>.<span class="ruby-identifier">downcase</span>.<span class="ruby-identifier">gsub</span>(<span class="ruby-regexp re">/_/</span>, <span class="ruby-value str">'/'</span>)
 215: 
-216:         <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
-217:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
-218:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
-219:     <span class="ruby-keyword kw">end</span></pre>
+216:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">filename</span><span class="ruby-operator">+</span><span class="ruby-value str">' not found!'</span> <span class="ruby-keyword kw">if</span> <span class="ruby-operator">!</span> <span class="ruby-identifier">const_defined?</span>(<span class="ruby-identifier">name</span>)
+217: 
+218:         <span class="ruby-identifier">klass</span> = <span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">name</span>)
+219:         <span class="ruby-keyword kw">return</span> <span class="ruby-identifier">klass</span> <span class="ruby-keyword kw">if</span> <span class="ruby-identifier">klass</span>
+220:         <span class="ruby-identifier">raise</span> <span class="ruby-identifier">klass</span><span class="ruby-operator">+</span><span class="ruby-value str">&quot; not found!&quot;</span>
+221:     <span class="ruby-keyword kw">end</span></pre>
 					</div>
 					
 				</div>
